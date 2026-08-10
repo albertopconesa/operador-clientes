@@ -199,3 +199,6 @@ def analyze(inp: AnalyzeIn):
     prompt = f"""Actúa como analista comercial para una agencia web local en España. Analiza este prospecto y devuelve en español: 1) por qué puede necesitar web, 2) propuesta de web de 5 secciones, 3) mensaje inicial de contacto de máximo 80 palabras, 4) objeción probable y respuesta. No inventes datos ni afirmes relación con el negocio. Prospecto: {json.dumps(b, ensure_ascii=False)}"""
     response = client.responses.create(model=os.getenv("OPENAI_MODEL","gpt-5.6"), input=prompt)
     return {"mode":"real","text":response.output_text}
+    @app.get("/demo")
+async def demo():
+    return FileResponse(BASE / "static" / "demostración.html")
