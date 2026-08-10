@@ -1,170 +1,286 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{NOMBRE_NEGOCIO}}</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #222;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reformas Martínez | Demo</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    color:#222;
+    background:#f5f5f5;
+}
+
+header{
+    background:#111;
+    color:white;
+    padding:70px 20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+header p{
+    font-size:19px;
+    opacity:.85;
+}
+
+.botones{
+    margin-top:30px;
+}
+
+.boton{
+    display:inline-block;
+    margin:7px;
+    padding:15px 25px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.llamar{
+    background:white;
+    color:#111;
+}
+
+.whatsapp{
+    background:#25D366;
+    color:white;
+}
+
+section{
+    max-width:1000px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+h2{
+    text-align:center;
+    font-size:30px;
+    margin-bottom:35px;
+}
+
+.servicios{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.servicio{
+    background:white;
+    padding:30px 20px;
+    border-radius:12px;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.servicio h3{
+    margin-bottom:12px;
+}
+
+.destacado{
+    background:#222;
+    color:white;
+    text-align:center;
+    max-width:none;
+}
+
+.destacado p{
+    max-width:700px;
+    margin:0 auto 25px;
+    font-size:18px;
+    line-height:1.6;
+}
+
+.resenas{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.resena{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+}
+
+.estrellas{
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.contacto{
+    text-align:center;
+}
+
+.contacto p{
+    margin:12px;
+    font-size:18px;
+}
+
+footer{
+    background:#111;
+    color:#aaa;
+    text-align:center;
+    padding:25px;
+}
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:34px;
     }
 
-    header {
-      background: #111;
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
+    .boton{
+        display:block;
+        max-width:280px;
+        margin:12px auto;
     }
-
-    header h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      font-size: 20px;
-      opacity: 0.85;
-    }
-
-    .botones {
-      margin-top: 25px;
-    }
-
-    .botones a {
-      display: inline-block;
-      margin: 8px;
-      padding: 14px 22px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    .llamar {
-      background: white;
-      color: #111;
-    }
-
-    .whatsapp {
-      background: #25D366;
-      color: white;
-    }
-
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 50px 20px;
-    }
-
-    h2 {
-      font-size: 30px;
-      margin-bottom: 25px;
-    }
-
-    .servicios {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .servicio {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 3px 15px rgba(0,0,0,.07);
-    }
-
-    .cta {
-      background: #111;
-      color: white;
-      text-align: center;
-      border-radius: 14px;
-      padding: 40px 20px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 14px;
-      color: #666;
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>{{NOMBRE_NEGOCIO}}</h1>
-  <p>{{SECTOR}} en {{LOCALIDAD}}</p>
 
-  <div class="botones">
-    <a class="llamar" href="tel:{{TELEFONO}}">
-      Llamar
-    </a>
+<h1>Reformas Martínez</h1>
 
-    <a class="whatsapp"
-       href="https://wa.me/{{WHATSAPP}}"
-       target="_blank">
-      WhatsApp
-    </a>
-  </div>
+<p>Reformas integrales y profesionales en Murcia</p>
+
+<div class="botones">
+
+<a class="boton llamar" href="tel:+34600000000">
+📞 Llamar ahora
+</a>
+
+<a class="boton whatsapp"
+href="https://wa.me/34600000000">
+💬 Pedir presupuesto
+</a>
+
+</div>
+
 </header>
 
-<section>
-  <h2>Sobre nosotros</h2>
-  <p>
-    Somos una empresa especializada en {{SECTOR}} en {{LOCALIDAD}}.
-    Ofrecemos atención profesional, presupuestos personalizados y soluciones adaptadas a cada cliente.
-  </p>
-</section>
 
 <section>
-  <h2>Nuestros servicios</h2>
 
-  <div class="servicios">
+<h2>Nuestros servicios</h2>
 
-    <div class="servicio">
-      <h3>{{SERVICIO_1}}</h3>
-      <p>Servicio profesional adaptado a las necesidades de cada cliente.</p>
-    </div>
+<div class="servicios">
 
-    <div class="servicio">
-      <h3>{{SERVICIO_2}}</h3>
-      <p>Presupuesto personalizado y atención cercana.</p>
-    </div>
+<div class="servicio">
+<h3>🏠 Reformas integrales</h3>
+<p>Transformamos viviendas completas adaptándonos a tus necesidades.</p>
+</div>
 
-    <div class="servicio">
-      <h3>{{SERVICIO_3}}</h3>
-      <p>Trabajo rápido, profesional y con atención directa.</p>
-    </div>
+<div class="servicio">
+<h3>🚿 Baños</h3>
+<p>Renovación completa de baños con acabados modernos.</p>
+</div>
 
-  </div>
+<div class="servicio">
+<h3>🍳 Cocinas</h3>
+<p>Diseño y reforma de cocinas funcionales y actuales.</p>
+</div>
+
+<div class="servicio">
+<h3>🎨 Pintura</h3>
+<p>Pintura interior y exterior para viviendas y negocios.</p>
+</div>
+
+</div>
+
 </section>
+
+
+<section class="destacado">
+
+<h2>¿Pensando en reformar?</h2>
+
+<p>
+Cuéntanos qué necesitas y solicita un presupuesto sin compromiso.
+Trabajamos en Murcia y alrededores.
+</p>
+
+<a class="boton whatsapp"
+href="https://wa.me/34600000000">
+💬 Solicitar presupuesto por WhatsApp
+</a>
+
+</section>
+
 
 <section>
-  <div class="cta">
-    <h2>¿Necesitas presupuesto?</h2>
-    <p>Contacta con nosotros sin compromiso.</p>
 
-    <a class="whatsapp"
-       href="https://wa.me/{{WHATSAPP}}"
-       target="_blank">
-      Pedir presupuesto por WhatsApp
-    </a>
-  </div>
+<h2>Lo que dicen nuestros clientes</h2>
+
+<div class="resenas">
+
+<div class="resena">
+<div class="estrellas">★★★★★</div>
+<p>“Muy profesionales y puntuales. El resultado quedó incluso mejor de lo esperado.”</p>
+<br>
+<strong>María G.</strong>
+</div>
+
+<div class="resena">
+<div class="estrellas">★★★★★</div>
+<p>“Nos reformaron el baño completo. Muy buena atención y trabajo limpio.”</p>
+<br>
+<strong>Antonio R.</strong>
+</div>
+
+<div class="resena">
+<div class="estrellas">★★★★★</div>
+<p>“Presupuesto claro desde el principio y muy buen resultado.”</p>
+<br>
+<strong>Laura P.</strong>
+</div>
+
+</div>
+
 </section>
 
-<section>
-  <h2>Contacto</h2>
 
-  <p><strong>Teléfono:</strong> {{TELEFONO}}</p>
-  <p><strong>Localidad:</strong> {{LOCALIDAD}}</p>
+<section class="contacto">
+
+<h2>Contacto</h2>
+
+<p>📍 Murcia, España</p>
+
+<p>📞 600 000 000</p>
+
+<p>🕐 Lunes a viernes · 8:00 - 19:00</p>
+
+<div class="botones">
+
+<a class="boton whatsapp"
+href="https://wa.me/34600000000">
+Hablar por WhatsApp
+</a>
+
+</div>
+
 </section>
+
 
 <footer>
-  © {{NOMBRE_NEGOCIO}}
+
+Demo creada con Operador Clientes
+
 </footer>
 
 </body>
