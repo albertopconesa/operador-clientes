@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Servicios | Tu Empresa</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6f8;
+      color: #20242a;
+      line-height: 1.6;
+    }
+
+    /* CABECERA */
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 15px rgba(0,0,0,.15);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #ffb703;
+    }
+
+    /* HERO */
+
+    .hero {
+      background:
+        linear-gradient(rgba(8,15,30,.78), rgba(8,15,30,.78)),
+        url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1600&q=80");
+
+      background-size: cover;
+      background-position: center;
+
+      min-height: 480px;
+
+      display: flex;
+      align-items: center;
+
+      color: white;
+      padding: 60px 22px;
+    }
+
+    .hero-content {
+      max-width: 1050px;
+      margin: auto;
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 7vw, 70px);
+      line-height: 1.05;
+      max-width: 750px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 650px;
+      color: #e5e7eb;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #ffb703;
+      color: #111827;
+      padding: 15px 25px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-secondary {
+      background: white;
+    }
+
+    /* SECCIONES */
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 22px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #68707c;
+      font-size: 18px;
+    }
+
+    /* SERVICIOS */
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 20px;
+    }
+
+    .service {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.07);
+      transition: .25s;
+    }
+
+    .service:hover {
+      transform: translateY(-5px);
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .service h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .service p {
+      color: #667085;
+    }
+
+    /* LISTA */
+
+    .work-section {
+      background: #111827;
+      color: white;
+      max-width: none;
+    }
+
+    .work-inner {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .work-section .section-title p {
+      color: #cbd5e1;
+    }
+
+    .work-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 14px;
+    }
+
+    .work-item {
+      background: #1f2937;
+      padding: 18px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .check {
+      color: #ffb703;
+      margin-right: 8px;
+    }
+
+    /* PRECIOS */
+
+    .prices {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 20px;
+    }
+
+    .price {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.07);
+    }
+
+    .price.featured {
+      border: 3px solid #ffb703;
+      transform: scale(1.02);
+    }
+
+    .price h3 {
+      font-size: 25px;
+    }
+
+    .price-number {
+      font-size: 35px;
+      font-weight: 900;
+      margin: 15px 0;
+    }
+
+    .price ul {
+      list-style: none;
+      margin-bottom: 25px;
+    }
+
+    .price li {
+      margin: 9px 0;
+    }
+
+    /* CTA */
+
+    .cta {
+      background: #ffb703;
+      border-radius: 22px;
+      padding: 50px 25px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      margin-bottom: 25px;
+      font-size: 18px;
+    }
+
+    .cta .btn {
+      background: #111827;
+      color: white;
+    }
+
+    footer {
+      background: #0b0f17;
+      color: #aeb7c4;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    /* MÓVIL */
+
+    @media(max-width:700px) {
+
+      .nav {
+        display: block;
+      }
+
+      .logo {
+        margin-bottom: 12px;
+      }
+
+      nav {
+        gap: 12px;
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: 520px;
+      }
+
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      .section-title h2 {
+        font-size: 31px;
+      }
+
+      .price.featured {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+
+    <div class="logo">
+      Tu Empresa
+    </div>
+
+    <nav>
+      <a href="demo.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="trabajos.html">Trabajos</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<div class="hero">
+
+  <div class="hero-content">
+
+    <h1>
+      Servicios profesionales en Murcia
+    </h1>
+
+    <p>
+      Soluciones rápidas, profesionales y adaptadas a cada cliente.
+      Consulta nuestros servicios y solicita presupuesto sin compromiso.
+    </p>
+
+    <a class="btn" href="#servicios">
+      Ver servicios
+    </a>
+
+    <a class="btn btn-secondary" href="presupuesto.html">
+      Pedir presupuesto
+    </a>
+
+  </div>
+
+</div>
+
+
+<section id="servicios">
+
+  <div class="section-title">
+
+    <h2>Nuestros servicios</h2>
+
+    <p>
+      Algunos de los trabajos que realizamos.
+    </p>
+
+  </div>
+
+
+  <div class="services">
+
+    <div class="service">
+
+      <div class="icon">🔧</div>
+
+      <h3>Mantenimiento</h3>
+
+      <p>
+        Revisión, mantenimiento preventivo y puesta a punto para mantener
+        todo funcionando correctamente.
+      </p>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="icon">⚙️</div>
+
+      <h3>Reparaciones</h3>
+
+      <p>
+        Diagnóstico y reparación de averías con atención personalizada
+        y explicación clara del trabajo necesario.
+      </p>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="icon">🔍</div>
+
+      <h3>Diagnóstico</h3>
+
+      <p>
+        Localización de problemas y valoración previa antes de realizar
+        cualquier reparación.
+      </p>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="icon">🛠️</div>
+
+      <h3>Servicio completo</h3>
+
+      <p>
+        Soluciones adaptadas a cada necesidad, desde pequeños trabajos
+        hasta intervenciones más completas.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="work-section">
+
+  <div class="work-inner">
+
+    <div class="section-title">
+
+      <h2>¿Qué trabajos realizamos?</h2>
+
+      <p>
+        Una lista clara para que el cliente encuentre rápidamente lo que necesita.
+      </p>
+
+    </div>
+
+
+    <div class="work-list">
+
+      <div class="work-item">
+        <span class="check">✓</span>
+        Revisiones periódicas
+      </div>
+
+      <div class="work-item">
+        <span class="check">✓</span>
+        Cambio de aceite
+      </div>
+
+      <div class="work-item">
+        <span class="check">✓</span>
+        Filtros
+      </div>
+
+      <div class="work-item">
+        <span class="check">✓</span>
+        Frenos
+      </div>
+
+      <div class="work-item">
+        <span class="check">✓</span>
+        Baterías
+      </div>
+
+      <div class="work-item">
+        <span class="check">✓</span>
+        Diagnóstico de averías
+      </div>
+
+      <div class="work-item">
+        <span class="check">✓</span>
+        Suspensión
+      </div>
+
+      <div class="work-item">
+        <span class="check">✓</span>
+        Mantenimiento general
+      </div>
+
+      <div class="work-item">
+        <span class="check">✓</span>
+        Preparación para ITV
+      </div>
+
+      <div class="work-item">
+        <span class="check">✓</span>
+        Reparaciones mecánicas
+      </div>
+
+      <div class="work-item">
+        <span class="check">✓</span>
+        Revisión de seguridad
+      </div>
+
+      <div class="work-item">
+        <span class="check">✓</span>
+        Presupuestos personalizados
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section>
+
+  <div class="section-title">
+
+    <h2>Opciones de servicio</h2>
+
+    <p>
+      Ejemplo de cómo presentar diferentes opciones al cliente.
+    </p>
+
+  </div>
+
+
+  <div class="prices">
+
+    <div class="price">
+
+      <h3>Servicio básico</h3>
+
+      <div class="price-number">
+        Consultar
+      </div>
+
+      <ul>
+        <li>✓ Revisión inicial</li>
+        <li>✓ Diagnóstico</li>
+        <li>✓ Presupuesto previo</li>
+        <li>✓ Atención personalizada</li>
+      </ul>
+
+      <a class="btn" href="presupuesto.html">
+        Solicitar
+      </a>
+
+    </div>
+
+
+    <div class="price featured">
+
+      <h3>Servicio completo</h3>
+
+      <div class="price-number">
+        A medida
+      </div>
+
+      <ul>
+        <li>✓ Diagnóstico completo</li>
+        <li>✓ Mano de obra</li>
+        <li>✓ Revisión general</li>
+        <li>✓ Presupuesto detallado</li>
+        <li>✓ Seguimiento del trabajo</li>
+      </ul>
+
+      <a class="btn" href="presupuesto.html">
+        Pedir presupuesto
+      </a>
+
+    </div>
+
+
+    <div class="price">
+
+      <h3>Empresas</h3>
+
+      <div class="price-number">
+        Personalizado
+      </div>
+
+      <ul>
+        <li>✓ Atención profesional</li>
+        <li>✓ Servicios recurrentes</li>
+        <li>✓ Presupuesto personalizado</li>
+        <li>✓ Contacto directo</li>
+      </ul>
+
+      <a class="btn" href="contacto.html">
+        Contactar
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section>
+
+  <div class="cta">
+
+    <h2>¿Necesitas presupuesto?</h2>
+
+    <p>
+      Cuéntanos qué necesitas y te responderemos con una propuesta
+      adaptada a tu caso.
+    </p>
+
+    <a class="btn" href="presupuesto.html">
+      Solicitar presupuesto
+    </a>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <p>
+    © 2026 Tu Empresa · Murcia
+  </p>
+
+</footer>
+
+</body>
+    </html>
