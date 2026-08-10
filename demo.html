@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo web</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--accent:#ff7a00;--dark:#111418;--soft:#f4f5f7;--text:#20242a}
+body{font-family:Inter,Arial,sans-serif;color:var(--text);background:white}
+.hero{min-height:70vh;background:linear-gradient(135deg,#111418,#252b33);color:white;display:flex;align-items:center;padding:70px 22px}
+.hero-inner{width:min(1060px,100%);margin:auto}
+.badge{display:inline-block;padding:8px 12px;border:1px solid #ffffff38;border-radius:999px;font-size:13px;margin-bottom:18px}
+h1{font-size:clamp(40px,8vw,76px);line-height:1.02;max-width:850px}
+.hero p{font-size:clamp(18px,3vw,23px);color:#d7dce2;max-width:720px;margin-top:20px;line-height:1.5}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-block;text-decoration:none;padding:15px 20px;border-radius:12px;font-weight:800}
+.primary{background:var(--accent);color:white}
+.secondary{background:white;color:#111}
+.wrap{width:min(1060px,100%);margin:auto;padding:70px 22px}
+.section-title{font-size:32px;margin-bottom:12px}
+.lead{color:#666f7a;line-height:1.6;max-width:760px}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.service{background:var(--soft);padding:26px;border-radius:18px;min-height:175px}
+.service .icon{font-size:30px}
+.service h3{margin:18px 0 9px;font-size:20px}
+.service p{color:#66707c;line-height:1.5}
+.proof{background:#111418;color:white}
+.proof-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+.rating{font-size:58px;font-weight:900}
+.stars{font-size:23px;color:#ffd159;margin:5px 0}
+.muted{color:#bbc1c9;line-height:1.6}
+.contact-card{background:var(--soft);border-radius:22px;padding:28px;margin-top:28px}
+.contact-line{padding:10px 0;border-bottom:1px solid #dfe2e6}
+.contact-line:last-child{border-bottom:0}
+.footer{padding:35px 22px;text-align:center;background:#0b0d10;color:#9da4ad;font-size:13px}
+.demo-note{position:fixed;left:12px;right:12px;bottom:12px;margin:auto;max-width:520px;background:#111;color:#fff;border:1px solid #333;padding:10px 14px;border-radius:12px;font-size:12px;text-align:center;opacity:.9}
+@media(max-width:720px){
+  .services{grid-template-columns:1fr}
+  .proof-grid{grid-template-columns:1fr}
+  .hero{min-height:64vh}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="badge" id="sectorBadge">Negocio local</div>
+    <h1 id="businessName">Tu negocio</h1>
+    <p id="heroText">Una web moderna para presentar tus servicios y convertir visitas en llamadas y contactos por WhatsApp.</p>
+    <div class="actions">
+      <a id="callBtn" class="btn secondary" href="#">📞 Llamar</a>
+      <a id="waBtn" class="btn primary" href="#" target="_blank">💬 Pedir presupuesto</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2 class="section-title">Servicios</h2>
+  <p class="lead" id="servicesLead">Soluciones profesionales, atención cercana y una forma sencilla de contactar.</p>
+  <div class="services" id="services"></div>
+</section>
+
+<section class="proof">
+  <div class="wrap proof-grid">
+    <div>
+      <h2 class="section-title">La confianza también cuenta</h2>
+      <p class="muted">Esta demo aprovecha la reputación real del negocio para transmitir confianza desde el primer vistazo.</p>
+    </div>
+    <div>
+      <div class="rating" id="rating">—</div>
+      <div class="stars">★★★★★</div>
+      <div class="muted" id="reviews">Valoraciones de clientes</div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2 class="section-title">Contacto</h2>
+  <p class="lead">Todo lo importante, visible y fácil de usar desde el móvil.</p>
+  <div class="contact-card">
+    <div class="contact-line"><strong>📍 Dirección:</strong> <span id="address">Por completar</span></div>
+    <div class="contact-line"><strong>📞 Teléfono:</strong> <span id="phone">Por completar</span></div>
+    <div class="contact-line"><strong>🗺️ Zona:</strong> <span id="zone">Por completar</span></div>
+  </div>
+  <div class="actions">
+    <a id="waBtn2" class="btn primary" href="#" target="_blank">Hablar por WhatsApp</a>
+  </div>
+</section>
+
+<footer class="footer">Vista previa comercial · Demo no oficial del negocio</footer>
+<div class="demo-note">DEMO: vista previa creada para enseñar una posible web. No es la web oficial del negocio.</div>
+
+<script>
+const q = new URLSearchParams(location.search);
+
+const data = {
+  name: q.get('name') || 'Tu negocio',
+  phone: q.get('phone') || '',
+  sector: q.get('sector') || 'servicios profesionales',
+  zone: q.get('zone') || '',
+  address: q.get('address') || '',
+  rating: q.get('rating') || '',
+  reviews: q.get('reviews') || ''
+};
+
+function normalizePhone(phone){
+  let n = String(phone || '').replace(/\D/g,'');
+  if(n.length === 9) n = '34' + n;
+  return n;
+}
+
+function sectorConfig(sector){
+  const s = (sector || '').toLowerCase();
+
+  if(s.includes('taller') || s.includes('mecán') || s.includes('auto')){
+    return {
+      accent:'#ef5b2a',
+      title:'Taller mecánico',
+      hero:'Mantenimiento y reparación de tu vehículo con atención directa y profesional.',
+      services:[
+        ['🔧','Mecánica general','Revisión, diagnóstico y reparación para mantener tu vehículo en perfecto estado.'],
+        ['🛞','Neumáticos y frenos','Mantenimiento de elementos clave para conducir con seguridad.'],
+        ['🧰','Diagnosis y mantenimiento','Detección de averías y mantenimiento preventivo adaptado a tu vehículo.']
+      ]
+    };
+  }
+
+  if(s.includes('reforma') || s.includes('constru') || s.includes('albañ')){
+    return {
+      accent:'#ff7a00',
+      title:'Reformas y construcción',
+      hero:'Reformas profesionales con presupuestos claros y atención personalizada.',
+      services:[
+        ['🏠','Reformas integrales','Transformación de viviendas y espacios adaptada a cada proyecto.'],
+        ['🚿','Baños y cocinas','Renovación funcional y moderna de las zonas más importantes de la vivienda.'],
+        ['🎨','Acabados','Pintura, revestimientos y últimos detalles para un resultado cuidado.']
+      ]
+    };
+  }
+
+  if(s.includes('pelu') || s.includes('barber') || s.includes('estét')){
+    return {
+      accent:'#b95cff',
+      title:'Belleza y cuidado personal',
+      hero:'Reserva y descubre servicios profesionales de belleza y cuidado personal.',
+      services:[
+        ['✂️','Servicios personalizados','Atención adaptada al estilo y necesidades de cada cliente.'],
+        ['✨','Cuidado y estética','Tratamientos pensados para conseguir un resultado cuidado.'],
+        ['📅','Cita sencilla','Contacto directo para consultar disponibilidad y reservar.']
+      ]
+    };
+  }
+
+  if(s.includes('restaur') || s.includes('bar ') || s.includes('caf')){
+    return {
+      accent:'#d94e32',
+      title:'Restauración',
+      hero:'Una presentación atractiva para descubrir el local, consultar información y reservar.',
+      services:[
+        ['🍽️','Nuestra propuesta','Una experiencia pensada para disfrutar y volver.'],
+        ['🥘','Especialidades','Selección de platos y productos destacados del establecimiento.'],
+        ['📍','Reserva y ubicación','Toda la información necesaria para llegar y contactar fácilmente.']
+      ]
+    };
+  }
+
+  return {
+    accent:'#3b82f6',
+    title:data.sector || 'Servicios profesionales',
+    hero:'Atención profesional, contacto directo y toda la información importante en un solo lugar.',
+    services:[
+      ['⭐','Servicio profesional','Soluciones adaptadas a las necesidades de cada cliente.'],
+      ['🤝','Atención cercana','Contacto directo y una experiencia sencilla desde el primer momento.'],
+      ['📞','Presupuesto y contacto','Una forma rápida de consultar información y solicitar presupuesto.']
+    ]
+  };
+}
+
+const cfg = sectorConfig(data.sector);
+document.documentElement.style.setProperty('--accent', cfg.accent);
+
+document.title = data.name + ' | Demo web';
+document.getElementById('businessName').textContent = data.name;
+document.getElementById('sectorBadge').textContent = cfg.title + (data.zone ? ' · ' + data.zone : '');
+document.getElementById('heroText').textContent = cfg.hero;
+
+document.getElementById('address').textContent = data.address || 'Dirección por completar';
+document.getElementById('phone').textContent = data.phone || 'Teléfono por completar';
+document.getElementById('zone').textContent = data.zone || 'Zona por completar';
+
+document.getElementById('rating').textContent = data.rating || '—';
+document.getElementById('reviews').textContent = data.reviews ? data.reviews + ' reseñas' : 'Valoraciones de clientes';
+
+document.getElementById('services').innerHTML = cfg.services.map(s => `
+  <article class="service">
+    <div class="icon">${s[0]}</div>
+    <h3>${s[1]}</h3>
+    <p>${s[2]}</p>
+  </article>
+`).join('');
+
+const phone = normalizePhone(data.phone);
+const call = data.phone ? 'tel:' + data.phone : '#';
+const wa = phone ? 'https://wa.me/' + phone + '?text=' + encodeURIComponent('Hola, me gustaría pedir información.') : '#';
+
+document.getElementById('callBtn').href = call;
+document.getElementById('waBtn').href = wa;
+document.getElementById('waBtn2').href = wa;
+
+if(!data.phone){
+  document.getElementById('callBtn').style.display='none';
+  document.getElementById('waBtn').style.display='none';
+  document.getElementById('waBtn2').style.display='none';
+}
+</script>
+</body>
+</html>
