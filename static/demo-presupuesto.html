@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Demo | Inicio</title>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Demo | Presupuesto</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -82,12 +82,9 @@ footer{padding:34px 22px;text-align:center;color:#929aa5;background:#080a0d;font
  </div>
 </nav>
 
-<section class="hero" id="hero"><div class="hero-inner reveal">
- <div class="badge" id="sectorBadge">Negocio local</div><h1 id="businessName">Tu negocio</h1><p id="heroText"></p>
- <div class="actions"><a class="btn secondary" data-call>📞 Llamar</a><a class="btn primary" data-wa target="_blank">💬 WhatsApp</a><a class="btn primary" id="budgetHero">📝 Pedir presupuesto</a></div>
-</div></section>
-<section class="wrap reveal"><div class="eyebrow">Resumen</div><h2 class="section-title">Todo lo importante en un vistazo</h2><p class="lead">Una web pensada para convertir búsquedas en llamadas, mensajes y solicitudes de presupuesto.</p><div class="services" id="services"></div></section>
-<section class="proof"><div class="wrap proof-grid reveal"><div><div class="eyebrow">Confianza</div><h2 class="section-title">Una reputación que merece verse</h2><p class="proof-copy">Las valoraciones reales ayudan a convencer a nuevos clientes.</p></div><div><div class="rating" id="rating">—</div><div class="stars">★★★★★</div><p id="reviews" class="proof-copy"></p></div></div></section>
+<section class="budget"><div class="wrap reveal"><div class="eyebrow">Presupuesto y contacto</div><h1 class="section-title">Cuéntanos qué necesitas</h1><p class="lead">Selecciona servicios, añade tus datos y prepara una solicitud para enviarla por WhatsApp.</p>
+<div class="budget-grid"><div class="budget-info"><h2 id="businessName">Negocio</h2><p>Presupuesto sin compromiso. En la web definitiva el negocio decide si muestra tarifas o trabaja sólo con solicitudes.</p><div class="contact-line"><strong>📍 Dirección:</strong> <span id="address"></span></div><div class="contact-line"><strong>🗺️ Zona:</strong> <span id="zone"></span></div><div class="contact-line"><strong>📞 Teléfono:</strong> <span id="phone"></span></div><div class="actions"><a class="btn secondary" data-call>📞 Llamar</a></div></div>
+<div class="form-card"><div class="field"><label>Nombre</label><input id="customerName" placeholder="Tu nombre"></div><div class="field"><label>Teléfono</label><input id="customerPhone" placeholder="600 000 000"></div><div class="field"><label>Servicios</label><div class="budget-tasks" id="budgetTasks"></div></div><div class="field"><label>Detalles</label><textarea id="details" placeholder="Explícanos qué necesitas..."></textarea></div><button class="btn primary" id="sendBudget">💬 Enviar solicitud por WhatsApp</button></div></div></div></section>
 
 <footer>Demo comercial · No representa todavía la web oficial del negocio.</footer>
 <script>
@@ -184,14 +181,17 @@ function setupContact(){
  return {phone,wa};
 }
 
-setupNav("/demo");setupReveal();const contact=setupContact();
+setupNav("demo-presupuesto");setupReveal();const contact=setupContact();
 
-document.title=data.name+" | Inicio";
-document.getElementById("hero").style.backgroundImage=`url("${cfg.photos[0]}")`;
-document.getElementById("sectorBadge").textContent=cfg.title+(data.zone?" · "+data.zone:"");
-document.getElementById("businessName").textContent=data.name;document.getElementById("heroText").textContent=cfg.hero;
-document.getElementById("services").innerHTML=cfg.services.slice(0,3).map(s=>`<article class="service"><div class="service-icon">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></article>`).join("");
-document.getElementById("rating").textContent=data.rating||"—";document.getElementById("reviews").textContent=data.reviews?data.reviews+" reseñas":"Valoraciones de clientes";
-document.getElementById("budgetHero").href=qsWithData("/static/demo-presupuesto.html");
+document.title=data.name+" | Presupuesto";document.getElementById("businessName").textContent=data.name;document.getElementById("address").textContent=data.address||"Por completar";document.getElementById("zone").textContent=data.zone||"Por completar";document.getElementById("phone").textContent=data.phone||"Por completar";
+document.getElementById("budgetTasks").innerHTML=cfg.tasks.slice(0,10).map(t=>`<label class="budget-task"><input type="checkbox" class="budgetCheck" value="${t}"><span>${t}</span></label>`).join("");
+document.getElementById("sendBudget").addEventListener("click",()=>{
+ if(!contact.phone){alert("Esta demo no tiene teléfono asociado.");return;}
+ const selected=[...document.querySelectorAll(".budgetCheck:checked")].map(x=>x.value);
+ const n=document.getElementById("customerName").value.trim(),p=document.getElementById("customerPhone").value.trim(),d=document.getElementById("details").value.trim();
+ let text=`Hola, me gustaría solicitar presupuesto a ${data.name}.`;
+ if(n)text+=`\n\nNombre: ${n}`; if(p)text+=`\nTeléfono: ${p}`; if(selected.length)text+=`\n\nServicios:\n- ${selected.join("\n- ")}`; if(d)text+=`\n\nDetalles:\n${d}`;
+ window.open("https://wa.me/"+contact.phone+"?text="+encodeURIComponent(text),"_blank");
+});
 
 </script></body></html>

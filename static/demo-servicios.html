@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Demo | Inicio</title>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Demo | Servicios</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -82,12 +82,9 @@ footer{padding:34px 22px;text-align:center;color:#929aa5;background:#080a0d;font
  </div>
 </nav>
 
-<section class="hero" id="hero"><div class="hero-inner reveal">
- <div class="badge" id="sectorBadge">Negocio local</div><h1 id="businessName">Tu negocio</h1><p id="heroText"></p>
- <div class="actions"><a class="btn secondary" data-call>📞 Llamar</a><a class="btn primary" data-wa target="_blank">💬 WhatsApp</a><a class="btn primary" id="budgetHero">📝 Pedir presupuesto</a></div>
-</div></section>
-<section class="wrap reveal"><div class="eyebrow">Resumen</div><h2 class="section-title">Todo lo importante en un vistazo</h2><p class="lead">Una web pensada para convertir búsquedas en llamadas, mensajes y solicitudes de presupuesto.</p><div class="services" id="services"></div></section>
-<section class="proof"><div class="wrap proof-grid reveal"><div><div class="eyebrow">Confianza</div><h2 class="section-title">Una reputación que merece verse</h2><p class="proof-copy">Las valoraciones reales ayudan a convencer a nuevos clientes.</p></div><div><div class="rating" id="rating">—</div><div class="stars">★★★★★</div><p id="reviews" class="proof-copy"></p></div></div></section>
+<section class="wrap reveal"><div class="eyebrow">Servicios</div><h1 class="section-title" id="pageTitle">Servicios</h1><p class="lead">Una página completa para explicar con claridad todo lo que realiza el negocio.</p>
+<div class="services" id="services"></div></section>
+<section style="background:var(--soft)"><div class="wrap reveal"><div class="eyebrow">Lista detallada</div><h2 class="section-title">Trabajos y tareas habituales</h2><div class="task-grid" id="taskGrid"></div><div class="actions"><a class="btn primary" id="budgetLink">Pedir presupuesto</a></div></div></section>
 
 <footer>Demo comercial · No representa todavía la web oficial del negocio.</footer>
 <script>
@@ -184,14 +181,11 @@ function setupContact(){
  return {phone,wa};
 }
 
-setupNav("/demo");setupReveal();const contact=setupContact();
+setupNav("demo-servicios");setupReveal();const contact=setupContact();
 
-document.title=data.name+" | Inicio";
-document.getElementById("hero").style.backgroundImage=`url("${cfg.photos[0]}")`;
-document.getElementById("sectorBadge").textContent=cfg.title+(data.zone?" · "+data.zone:"");
-document.getElementById("businessName").textContent=data.name;document.getElementById("heroText").textContent=cfg.hero;
-document.getElementById("services").innerHTML=cfg.services.slice(0,3).map(s=>`<article class="service"><div class="service-icon">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></article>`).join("");
-document.getElementById("rating").textContent=data.rating||"—";document.getElementById("reviews").textContent=data.reviews?data.reviews+" reseñas":"Valoraciones de clientes";
-document.getElementById("budgetHero").href=qsWithData("/static/demo-presupuesto.html");
+document.title=data.name+" | Servicios";document.getElementById("pageTitle").textContent="Servicios de "+data.name;
+document.getElementById("services").innerHTML=cfg.services.map(s=>`<article class="service"><div class="service-icon">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></article>`).join("");
+document.getElementById("taskGrid").innerHTML=cfg.tasks.map(t=>`<div class="task-item"><div class="checkmark">✓</div><div>${t}</div></div>`).join("");
+document.getElementById("budgetLink").href=qsWithData("/static/demo-presupuesto.html");
 
 </script></body></html>
