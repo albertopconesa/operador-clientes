@@ -2,203 +2,643 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reformas Martínez | Demo</title>
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>Demo web</title>
 
 <style>
+
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+:root{
+  --accent:#ff6b35;
+  --accent2:#ff9b63;
+  --dark:#0e1116;
+  --dark2:#191e25;
+  --text:#20242a;
+  --muted:#69717d;
+  --soft:#f5f6f8;
 }
 
 body{
-    font-family:Arial, sans-serif;
-    color:#222;
-    background:#f5f5f5;
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  color:var(--text);
+  background:white;
+  overflow-x:hidden;
 }
 
-header{
-    background:#111;
-    color:white;
-    padding:70px 20px;
-    text-align:center;
+
+/* HERO */
+
+.hero{
+  min-height:88vh;
+  position:relative;
+
+  display:flex;
+  align-items:center;
+
+  color:white;
+
+  background-position:center;
+  background-size:cover;
+
+  padding:80px 22px;
 }
 
-header h1{
-    font-size:42px;
-    margin-bottom:15px;
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5,8,12,.92),
+      rgba(5,8,12,.65),
+      rgba(5,8,12,.25)
+    );
 }
 
-header p{
-    font-size:19px;
-    opacity:.85;
+.hero-inner{
+  width:min(1100px,100%);
+  margin:auto;
+
+  position:relative;
+  z-index:2;
 }
 
-.botones{
-    margin-top:30px;
+.badge{
+  display:inline-block;
+
+  padding:9px 14px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.35);
+
+  background:
+    rgba(0,0,0,.25);
+
+  backdrop-filter:blur(10px);
+
+  border-radius:999px;
+
+  font-size:14px;
+
+  margin-bottom:22px;
 }
 
-.boton{
-    display:inline-block;
-    margin:7px;
-    padding:15px 25px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
+.hero h1{
+  font-size:
+    clamp(
+      42px,
+      8vw,
+      78px
+    );
+
+  line-height:1.02;
+
+  max-width:850px;
+
+  letter-spacing:-2px;
 }
 
-.llamar{
-    background:white;
-    color:#111;
+.hero p{
+  margin-top:22px;
+
+  max-width:700px;
+
+  font-size:
+    clamp(
+      18px,
+      3vw,
+      23px
+    );
+
+  line-height:1.55;
+
+  color:#e0e4e8;
 }
 
-.whatsapp{
-    background:#25D366;
-    color:white;
+
+/* BOTONES */
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:12px;
+
+  margin-top:32px;
 }
 
-section{
-    max-width:1000px;
-    margin:auto;
-    padding:60px 20px;
+.btn{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+
+  padding:
+    15px
+    21px;
+
+  border-radius:12px;
+
+  font-weight:800;
+
+  transition:
+    transform .25s,
+    opacity .25s;
 }
 
-h2{
-    text-align:center;
-    font-size:30px;
-    margin-bottom:35px;
+.btn:hover{
+  transform:
+    translateY(-3px);
 }
 
-.servicios{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+.primary{
+  background:var(--accent);
+  color:white;
 }
 
-.servicio{
-    background:white;
-    padding:30px 20px;
-    border-radius:12px;
-    box-shadow:0 3px 15px rgba(0,0,0,.08);
-    text-align:center;
+.secondary{
+  background:white;
+  color:#111;
 }
 
-.servicio h3{
-    margin-bottom:12px;
+.outline{
+  color:white;
+
+  border:
+    1px solid
+    rgba(255,255,255,.4);
+
+  background:
+    rgba(0,0,0,.25);
 }
 
-.destacado{
-    background:#222;
-    color:white;
-    text-align:center;
-    max-width:none;
+
+/* CONTENIDO */
+
+.wrap{
+  width:min(1100px,100%);
+
+  margin:auto;
+
+  padding:
+    85px
+    22px;
 }
 
-.destacado p{
-    max-width:700px;
-    margin:0 auto 25px;
-    font-size:18px;
-    line-height:1.6;
+.eyebrow{
+  font-weight:800;
+
+  color:var(--accent);
+
+  margin-bottom:10px;
+
+  text-transform:uppercase;
+
+  letter-spacing:1px;
+
+  font-size:13px;
 }
 
-.resenas{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+.section-title{
+  font-size:
+    clamp(
+      30px,
+      5vw,
+      44px
+    );
+
+  letter-spacing:-1px;
 }
 
-.resena{
-    background:white;
-    padding:25px;
-    border-radius:12px;
+.lead{
+  color:var(--muted);
+
+  line-height:1.7;
+
+  max-width:750px;
+
+  margin-top:14px;
+
+  font-size:17px;
 }
 
-.estrellas{
-    margin-bottom:10px;
-    font-size:20px;
+
+/* SERVICIOS */
+
+.services{
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  gap:20px;
+
+  margin-top:36px;
 }
 
-.contacto{
-    text-align:center;
+.service{
+  background:var(--soft);
+
+  border-radius:20px;
+
+  padding:28px;
+
+  transition:
+    transform .3s,
+    box-shadow .3s;
 }
 
-.contacto p{
-    margin:12px;
-    font-size:18px;
+.service:hover{
+  transform:
+    translateY(-7px);
+
+  box-shadow:
+    0
+    18px
+    40px
+    rgba(0,0,0,.08);
 }
+
+.icon{
+  font-size:37px;
+}
+
+.service h3{
+  font-size:21px;
+
+  margin:
+    20px
+    0
+    10px;
+}
+
+.service p{
+  color:var(--muted);
+
+  line-height:1.6;
+}
+
+
+/* IMAGEN */
+
+.visual{
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:45px;
+
+  align-items:center;
+}
+
+.photo{
+  min-height:450px;
+
+  border-radius:25px;
+
+  background-position:center;
+  background-size:cover;
+
+  box-shadow:
+    0
+    25px
+    70px
+    rgba(0,0,0,.15);
+}
+
+
+/* RESEÑAS */
+
+.proof{
+  background:
+    linear-gradient(
+      135deg,
+      var(--dark),
+      var(--dark2)
+    );
+
+  color:white;
+}
+
+.proof-grid{
+  display:grid;
+
+  grid-template-columns:
+    1.2fr
+    .8fr;
+
+  gap:40px;
+
+  align-items:center;
+}
+
+.rating{
+  font-size:70px;
+
+  font-weight:900;
+
+  line-height:1;
+}
+
+.stars{
+  color:#ffd45c;
+
+  font-size:25px;
+
+  margin:
+    10px
+    0;
+}
+
+.proof p{
+  color:#c4cad2;
+
+  line-height:1.7;
+}
+
+
+/* CONTACTO */
+
+.contact{
+  background:#f5f6f8;
+}
+
+.contact-card{
+  background:white;
+
+  border-radius:24px;
+
+  padding:30px;
+
+  margin-top:30px;
+
+  box-shadow:
+    0
+    15px
+    50px
+    rgba(0,0,0,.07);
+}
+
+.contact-line{
+  padding:
+    14px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    #e4e6e9;
+
+  font-size:16px;
+}
+
+.contact-line:last-child{
+  border-bottom:0;
+}
+
+
+/* WHATSAPP FLOTANTE */
+
+.whatsapp-floating{
+  position:fixed;
+
+  right:18px;
+  bottom:18px;
+
+  z-index:20;
+
+  width:58px;
+  height:58px;
+
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  border-radius:50%;
+
+  background:#25D366;
+
+  color:white;
+
+  text-decoration:none;
+
+  font-size:27px;
+
+  box-shadow:
+    0
+    10px
+    35px
+    rgba(0,0,0,.3);
+
+  animation:
+    pulse
+    2.2s
+    infinite;
+}
+
+@keyframes pulse{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.08);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+
+/* ANIMACIONES AL BAJAR */
+
+.reveal{
+  opacity:0;
+
+  transform:
+    translateY(35px);
+
+  transition:
+    opacity .75s ease,
+    transform .75s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+
+  transform:
+    translateY(0);
+}
+
+
+/* DEMO */
+
+.demo-label{
+  position:absolute;
+
+  top:20px;
+  right:20px;
+
+  z-index:5;
+
+  background:
+    rgba(0,0,0,.55);
+
+  padding:
+    8px
+    12px;
+
+  border-radius:999px;
+
+  font-size:12px;
+
+  backdrop-filter:
+    blur(10px);
+}
+
+
+/* FOOTER */
 
 footer{
-    background:#111;
-    color:#aaa;
-    text-align:center;
-    padding:25px;
+  background:#080a0d;
+
+  color:#969da7;
+
+  padding:
+    35px
+    22px;
+
+  text-align:center;
+
+  font-size:13px;
 }
 
-@media(max-width:600px){
 
-    header h1{
-        font-size:34px;
-    }
+/* MÓVIL */
 
-    .boton{
-        display:block;
-        max-width:280px;
-        margin:12px auto;
-    }
+@media(max-width:760px){
+
+  .hero{
+    min-height:82vh;
+  }
+
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  .visual{
+    grid-template-columns:1fr;
+  }
+
+  .proof-grid{
+    grid-template-columns:1fr;
+  }
+
+  .photo{
+    min-height:310px;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+  }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
-<header>
 
-<h1>Reformas Martínez</h1>
+<section
+  class="hero"
+  id="hero"
+>
 
-<p>Reformas integrales y profesionales en Murcia</p>
+<div class="demo-label">
+  DEMO · Vista previa
+</div>
 
-<div class="botones">
+<div class="hero-inner">
 
-<a class="boton llamar" href="tel:+34600000000">
+<div
+  class="badge"
+  id="sectorBadge"
+>
+Negocio local
+</div>
+
+<h1 id="businessName">
+Tu negocio
+</h1>
+
+<p id="heroText">
+Una web profesional para conseguir más clientes.
+</p>
+
+<div class="actions">
+
+<a
+  id="callBtn"
+  class="btn secondary"
+  href="#"
+>
 📞 Llamar ahora
 </a>
 
-<a class="boton whatsapp"
-href="https://wa.me/34600000000">
-💬 Pedir presupuesto
+<a
+  id="waBtn"
+  class="btn primary"
+  href="#"
+  target="_blank"
+>
+💬 WhatsApp
 </a>
 
-</div>
+<a
+  href="#contacto"
+  class="btn outline"
+>
+Ver información
+</a>
 
-</header>
-
-
-<section>
-
-<h2>Nuestros servicios</h2>
-
-<div class="servicios">
-
-<div class="servicio">
-<h3>🏠 Reformas integrales</h3>
-<p>Transformamos viviendas completas adaptándonos a tus necesidades.</p>
-</div>
-
-<div class="servicio">
-<h3>🚿 Baños</h3>
-<p>Renovación completa de baños con acabados modernos.</p>
-</div>
-
-<div class="servicio">
-<h3>🍳 Cocinas</h3>
-<p>Diseño y reforma de cocinas funcionales y actuales.</p>
-</div>
-
-<div class="servicio">
-<h3>🎨 Pintura</h3>
-<p>Pintura interior y exterior para viviendas y negocios.</p>
 </div>
 
 </div>
@@ -206,82 +646,920 @@ href="https://wa.me/34600000000">
 </section>
 
 
-<section class="destacado">
+<section class="wrap reveal">
 
-<h2>¿Pensando en reformar?</h2>
+<div class="eyebrow">
+Nuestros servicios
+</div>
 
-<p>
-Cuéntanos qué necesitas y solicita un presupuesto sin compromiso.
-Trabajamos en Murcia y alrededores.
+<h2 class="section-title">
+Profesionales a tu servicio
+</h2>
+
+<p
+  class="lead"
+  id="servicesLead"
+>
+Servicios adaptados a las necesidades de cada cliente.
 </p>
 
-<a class="boton whatsapp"
-href="https://wa.me/34600000000">
-💬 Solicitar presupuesto por WhatsApp
-</a>
-
-</section>
-
-
-<section>
-
-<h2>Lo que dicen nuestros clientes</h2>
-
-<div class="resenas">
-
-<div class="resena">
-<div class="estrellas">★★★★★</div>
-<p>“Muy profesionales y puntuales. El resultado quedó incluso mejor de lo esperado.”</p>
-<br>
-<strong>María G.</strong>
-</div>
-
-<div class="resena">
-<div class="estrellas">★★★★★</div>
-<p>“Nos reformaron el baño completo. Muy buena atención y trabajo limpio.”</p>
-<br>
-<strong>Antonio R.</strong>
-</div>
-
-<div class="resena">
-<div class="estrellas">★★★★★</div>
-<p>“Presupuesto claro desde el principio y muy buen resultado.”</p>
-<br>
-<strong>Laura P.</strong>
-</div>
-
+<div
+  class="services"
+  id="services"
+>
 </div>
 
 </section>
 
 
-<section class="contacto">
+<section class="wrap visual reveal">
 
-<h2>Contacto</h2>
+<div
+  class="photo"
+  id="businessPhoto"
+>
+</div>
 
-<p>📍 Murcia, España</p>
 
-<p>📞 600 000 000</p>
+<div>
 
-<p>🕐 Lunes a viernes · 8:00 - 19:00</p>
+<div class="eyebrow">
+¿Por qué elegirnos?
+</div>
 
-<div class="botones">
+<h2 class="section-title">
+Experiencia, confianza y atención cercana
+</h2>
 
-<a class="boton whatsapp"
-href="https://wa.me/34600000000">
-Hablar por WhatsApp
+<p class="lead">
+
+Una web moderna permite que nuevos clientes
+encuentren fácilmente el negocio,
+consulten sus servicios y contacten
+directamente desde el móvil.
+
+</p>
+
+<div class="actions">
+
+<a
+  id="callBtn2"
+  class="btn primary"
+  href="#"
+>
+Solicitar información
 </a>
 
 </div>
 
+</div>
+
 </section>
+
+
+<section class="proof">
+
+<div class="wrap proof-grid reveal">
+
+<div>
+
+<div class="eyebrow">
+Opiniones
+</div>
+
+<h2 class="section-title">
+La reputación habla por sí sola
+</h2>
+
+<p>
+
+Las valoraciones ayudan a transmitir confianza
+antes incluso de que el cliente visite el negocio.
+
+</p>
+
+</div>
+
+
+<div>
+
+<div
+  class="rating"
+  id="rating"
+>
+—
+</div>
+
+<div class="stars">
+★★★★★
+</div>
+
+<p id="reviews">
+Valoraciones de clientes
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section
+  class="contact"
+  id="contacto"
+>
+
+<div class="wrap reveal">
+
+<div class="eyebrow">
+Contacto
+</div>
+
+<h2 class="section-title">
+¿Necesitas información?
+</h2>
+
+<p class="lead">
+
+Contacta directamente con el negocio.
+
+</p>
+
+
+<div class="contact-card">
+
+<div class="contact-line">
+
+<strong>
+📍 Dirección:
+</strong>
+
+<span id="address">
+Por completar
+</span>
+
+</div>
+
+
+<div class="contact-line">
+
+<strong>
+📞 Teléfono:
+</strong>
+
+<span id="phone">
+Por completar
+</span>
+
+</div>
+
+
+<div class="contact-line">
+
+<strong>
+🗺️ Zona:
+</strong>
+
+<span id="zone">
+Por completar
+</span>
+
+</div>
+
+
+<div class="actions">
+
+<a
+  id="waBtn2"
+  class="btn primary"
+  href="#"
+  target="_blank"
+>
+💬 Contactar por WhatsApp
+</a>
+
+<a
+  id="callBtn3"
+  class="btn secondary"
+  href="#"
+>
+📞 Llamar
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<a
+  id="floatingWa"
+  class="whatsapp-floating"
+  href="#"
+  target="_blank"
+>
+💬
+</a>
 
 
 <footer>
 
-Demo creada con Operador Clientes
+Esta página es una demostración comercial
+y no representa la web oficial del negocio.
 
 </footer>
 
+
+<script>
+
+const q =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const data = {
+
+  name:
+    q.get("name")
+    || "Tu negocio",
+
+  phone:
+    q.get("phone")
+    || "",
+
+  sector:
+    q.get("sector")
+    || "",
+
+  zone:
+    q.get("zone")
+    || "",
+
+  address:
+    q.get("address")
+    || "",
+
+  rating:
+    q.get("rating")
+    || "",
+
+  reviews:
+    q.get("reviews")
+    || ""
+
+};
+
+
+function normalizePhone(phone){
+
+  let n =
+    String(phone || "")
+    .replace(/\D/g,"");
+
+  if(
+    n.length === 9
+  ){
+
+    n =
+      "34"
+      + n;
+
+  }
+
+  return n;
+
+}
+
+
+function sectorConfig(sector){
+
+  const s =
+    String(
+      sector || ""
+    ).toLowerCase();
+
+
+  /* TALLERES */
+
+  if(
+    s.includes("taller")
+    ||
+    s.includes("mecán")
+    ||
+    s.includes("auto")
+  ){
+
+    return {
+
+      accent:"#ef5b2a",
+
+      title:
+        "Taller mecánico",
+
+      hero:
+        "Mantenimiento y reparación de tu vehículo con atención profesional, rápida y cercana.",
+
+      heroPhoto:
+        "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1800&q=85",
+
+      secondPhoto:
+        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85",
+
+      services:[
+
+        [
+          "🔧",
+          "Mecánica general",
+          "Diagnóstico, mantenimiento y reparación para mantener tu vehículo en perfecto estado."
+        ],
+
+        [
+          "🛞",
+          "Neumáticos y frenos",
+          "Revisión de los elementos esenciales para una conducción segura."
+        ],
+
+        [
+          "⚙️",
+          "Diagnosis",
+          "Detección de averías y mantenimiento preventivo profesional."
+        ]
+
+      ]
+
+    };
+
+  }
+
+
+  /* REFORMAS */
+
+  if(
+    s.includes("reforma")
+    ||
+    s.includes("constru")
+    ||
+    s.includes("albañ")
+  ){
+
+    return {
+
+      accent:"#d98532",
+
+      title:
+        "Reformas y construcción",
+
+      hero:
+        "Transformamos viviendas y espacios con acabados profesionales y atención personalizada.",
+
+      heroPhoto:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85",
+
+      secondPhoto:
+        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85",
+
+      services:[
+
+        [
+          "🏠",
+          "Reformas integrales",
+          "Proyectos completos adaptados a cada vivienda y necesidad."
+        ],
+
+        [
+          "🚿",
+          "Baños y cocinas",
+          "Renovación funcional y moderna de los espacios principales."
+        ],
+
+        [
+          "🎨",
+          "Acabados",
+          "Pintura, revestimientos y detalles para conseguir un resultado profesional."
+        ]
+
+      ]
+
+    };
+
+  }
+
+
+  /* PELUQUERÍA */
+
+  if(
+    s.includes("pelu")
+    ||
+    s.includes("barber")
+    ||
+    s.includes("estét")
+  ){
+
+    return {
+
+      accent:"#a65bd4",
+
+      title:
+        "Belleza y cuidado",
+
+      hero:
+        "Tu estilo, tu imagen y tu momento. Atención personalizada y resultados profesionales.",
+
+      heroPhoto:
+        "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1800&q=85",
+
+      secondPhoto:
+        "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=85",
+
+      services:[
+
+        [
+          "✂️",
+          "Corte y estilo",
+          "Servicio personalizado adaptado a cada cliente."
+        ],
+
+        [
+          "✨",
+          "Tratamientos",
+          "Cuidado profesional para conseguir el mejor resultado."
+        ],
+
+        [
+          "📅",
+          "Reserva sencilla",
+          "Contacta directamente y consulta disponibilidad."
+        ]
+
+      ]
+
+    };
+
+  }
+
+
+  /* RESTAURANTES */
+
+  if(
+    s.includes("restaur")
+    ||
+    s.includes("caf")
+    ||
+    s.includes("bar")
+  ){
+
+    return {
+
+      accent:"#d84d34",
+
+      title:
+        "Restaurante",
+
+      hero:
+        "Una experiencia para disfrutar, compartir y recordar.",
+
+      heroPhoto:
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85",
+
+      secondPhoto:
+        "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=85",
+
+      services:[
+
+        [
+          "🍽️",
+          "Nuestra cocina",
+          "Una propuesta preparada para disfrutar de cada visita."
+        ],
+
+        [
+          "🥘",
+          "Especialidades",
+          "Descubre los platos y productos más destacados."
+        ],
+
+        [
+          "📅",
+          "Reservas",
+          "Contacta directamente para consultar disponibilidad."
+        ]
+
+      ]
+
+    };
+
+  }
+
+
+  /* CLÍNICAS */
+
+  if(
+    s.includes("clinic")
+    ||
+    s.includes("clínic")
+    ||
+    s.includes("dental")
+    ||
+    s.includes("fisio")
+    ||
+    s.includes("salud")
+  ){
+
+    return {
+
+      accent:"#2186d9",
+
+      title:
+        "Salud y bienestar",
+
+      hero:
+        "Atención profesional y cercana para cuidar de tu salud.",
+
+      heroPhoto:
+        "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1800&q=85",
+
+      secondPhoto:
+        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85",
+
+      services:[
+
+        [
+          "🩺",
+          "Atención profesional",
+          "Servicios especializados adaptados a cada paciente."
+        ],
+
+        [
+          "🤝",
+          "Trato cercano",
+          "Atención clara, profesional y personalizada."
+        ],
+
+        [
+          "📅",
+          "Cita previa",
+          "Consulta disponibilidad y solicita tu cita fácilmente."
+        ]
+
+      ]
+
+    };
+
+  }
+
+
+  /* GENERAL */
+
+  return {
+
+    accent:"#3978e8",
+
+    title:
+      data.sector
+      || "Negocio local",
+
+    hero:
+      "Servicio profesional, atención cercana y contacto directo.",
+
+    heroPhoto:
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=85",
+
+    secondPhoto:
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
+
+    services:[
+
+      [
+        "⭐",
+        "Servicio profesional",
+        "Soluciones adaptadas a las necesidades de cada cliente."
+      ],
+
+      [
+        "🤝",
+        "Atención cercana",
+        "Contacto directo y atención personalizada."
+      ],
+
+      [
+        "📞",
+        "Información rápida",
+        "Consulta servicios y solicita información fácilmente."
+      ]
+
+    ]
+
+  };
+
+}
+
+
+const cfg =
+  sectorConfig(
+    data.sector
+  );
+
+
+document
+  .documentElement
+  .style
+  .setProperty(
+    "--accent",
+    cfg.accent
+  );
+
+
+document.title =
+  data.name
+  + " | Demo";
+
+
+document
+  .getElementById(
+    "hero"
+  )
+  .style
+  .backgroundImage =
+    `url("${cfg.heroPhoto}")`;
+
+
+document
+  .getElementById(
+    "businessPhoto"
+  )
+  .style
+  .backgroundImage =
+    `url("${cfg.secondPhoto}")`;
+
+
+document
+  .getElementById(
+    "businessName"
+  )
+  .textContent =
+    data.name;
+
+
+document
+  .getElementById(
+    "sectorBadge"
+  )
+  .textContent =
+    cfg.title
+    +
+    (
+      data.zone
+      ? " · " + data.zone
+      : ""
+    );
+
+
+document
+  .getElementById(
+    "heroText"
+  )
+  .textContent =
+    cfg.hero;
+
+
+document
+  .getElementById(
+    "services"
+  )
+  .innerHTML =
+    cfg.services
+    .map(
+      service => `
+
+      <article class="service">
+
+        <div class="icon">
+          ${service[0]}
+        </div>
+
+        <h3>
+          ${service[1]}
+        </h3>
+
+        <p>
+          ${service[2]}
+        </p>
+
+      </article>
+
+      `
+    )
+    .join("");
+
+
+document
+  .getElementById(
+    "address"
+  )
+  .textContent =
+    data.address
+    || "Dirección por completar";
+
+
+document
+  .getElementById(
+    "phone"
+  )
+  .textContent =
+    data.phone
+    || "Teléfono por completar";
+
+
+document
+  .getElementById(
+    "zone"
+  )
+  .textContent =
+    data.zone
+    || "Zona por completar";
+
+
+document
+  .getElementById(
+    "rating"
+  )
+  .textContent =
+    data.rating
+    || "—";
+
+
+document
+  .getElementById(
+    "reviews"
+  )
+  .textContent =
+    data.reviews
+    ? data.reviews
+      + " reseñas"
+    : "Valoraciones de clientes";
+
+
+const phone =
+  normalizePhone(
+    data.phone
+  );
+
+
+const callLink =
+  data.phone
+  ? "tel:" + data.phone
+  : "#";
+
+
+const waLink =
+  phone
+  ? "https://wa.me/"
+    + phone
+    + "?text="
+    + encodeURIComponent(
+      "Hola, me gustaría pedir información."
+    )
+  : "#";
+
+
+[
+  "callBtn",
+  "callBtn2",
+  "callBtn3"
+]
+.forEach(
+  id => {
+
+    document
+      .getElementById(id)
+      .href =
+        callLink;
+
+  }
+);
+
+
+[
+  "waBtn",
+  "waBtn2",
+  "floatingWa"
+]
+.forEach(
+  id => {
+
+    document
+      .getElementById(id)
+      .href =
+        waLink;
+
+  }
+);
+
+
+if(
+  !data.phone
+){
+
+  document
+    .getElementById(
+      "callBtn"
+    )
+    .style
+    .display =
+      "none";
+
+  document
+    .getElementById(
+      "callBtn2"
+    )
+    .style
+    .display =
+      "none";
+
+  document
+    .getElementById(
+      "callBtn3"
+    )
+    .style
+    .display =
+      "none";
+
+  document
+    .getElementById(
+      "waBtn"
+    )
+    .style
+    .display =
+      "none";
+
+  document
+    .getElementById(
+      "waBtn2"
+    )
+    .style
+    .display =
+      "none";
+
+  document
+    .getElementById(
+      "floatingWa"
+    )
+    .style
+    .display =
+      "none";
+
+}
+
+
+/* ANIMACIÓN AL HACER SCROLL */
+
+const observer =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(
+        entry => {
+
+          if(
+            entry.isIntersecting
+          ){
+
+            entry
+              .target
+              .classList
+              .add(
+                "visible"
+              );
+
+          }
+
+        }
+      );
+
+    },
+
+    {
+      threshold:.15
+    }
+  );
+
+
+document
+  .querySelectorAll(
+    ".reveal"
+  )
+  .forEach(
+    el =>
+      observer.observe(el)
+  );
+
+</script>
+
 </body>
+
 </html>
