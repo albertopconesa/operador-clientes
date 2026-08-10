@@ -424,12 +424,14 @@ def set_status(
 ):
 
     allowed = {
-        "nuevo",
-        "contactar",
-        "contactado",
-        "interesado",
-        "cliente",
-        "descartado"
+    "nuevo",
+    "contactar",
+    "contactado",
+    "demo_enviada",
+    "interesado",
+    "cliente",
+    "descartado"
+}
     }
 
     if inp.status not in allowed:
