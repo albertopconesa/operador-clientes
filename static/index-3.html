@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#101114" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<title>Operador Clientes</title>
+
+<style>
+:root{
+  font-family:Inter,system-ui,Arial,sans-serif;
+  background:#0b0c0f;
+  color:#f5f6f7
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:#0b0c0f
+}
+
+.wrap{
+  max-width:920px;
+  margin:auto;
+  padding:20px
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px
+}
+
+.brand h1{
+  font-size:30px;
+  margin:0
+}
+
+.brand p{
+  margin:7px 0;
+  color:#aeb3bd;
+  font-size:17px
+}
+
+.pill{
+  padding:10px 14px;
+  border-radius:999px;
+  background:#1a1d23;
+  color:#cfd3da;
+  font-size:13px
+}
+
+.card{
+  background:#13161b;
+  border:1px solid #242832;
+  border-radius:18px;
+  padding:18px;
+  margin-top:18px
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 150px;
+  gap:12px
+}
+
+label{
+  font-size:13px;
+  color:#aeb3bd;
+  display:block;
+  margin:0 0 7px
+}
+
+input,
+select,
+button{
+  width:100%;
+  border-radius:12px;
+  border:1px solid #303540;
+  background:#0e1014;
+  color:#fff;
+  padding:14px;
+  font-size:15px
+}
+
+button{
+  cursor:pointer;
+  background:#f4f5f6;
+  color:#111;
+  font-weight:700;
+  border:none
+}
+
+.secondary{
+  background:#22262e;
+  color:#fff
+}
+
+.ghost{
+  background:transparent;
+  border:1px solid #333944;
+  color:#d9dde4
+}
+
+.demoBtn{
+  background:#6f5cff;
+  color:#fff
+}
+
+.row{
+  display:flex;
+  gap:10px;
+  align-items:center
+}
+
+.row > *{
+  flex:1
+}
+
+.check{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:12px;
+  color:#cfd3da
+}
+
+.check input{
+  width:auto
+}
+
+.result{
+  padding:18px 0;
+  border-bottom:1px solid #262b34
+}
+
+.result:last-child{
+  border-bottom:0
+}
+
+.result h3{
+  margin:0 0 7px;
+  font-size:21px
+}
+
+.meta{
+  font-size:14px;
+  color:#aeb3bd;
+  line-height:1.55
+}
+
+.score{
+  font-size:15px;
+  font-weight:800;
+  padding:8px 12px;
+  border-radius:10px;
+  background:#1f2730;
+  white-space:nowrap
+}
+
+.actions{
+  display:flex;
+  gap:9px;
+  margin-top:14px;
+  flex-wrap:wrap
+}
+
+.actions button,
+.actions a{
+  width:auto;
+  padding:10px 13px;
+  font-size:14px;
+  border-radius:10px;
+  text-decoration:none
+}
+
+.good{
+  color:#9be5b1
+}
+
+.warn{
+  color:#ffd99a
+}
+
+.tabs{
+  display:flex;
+  gap:10px;
+  margin-top:22px
+}
+
+.tabs button{
+  background:#171a20;
+  color:#cfd3da
+}
+
+.tabs button.active{
+  background:#f4f5f6;
+  color:#111
+}
+
+.hidden{
+  display:none
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:12px
+}
+
+.stat{
+  background:#0e1014;
+  border-radius:14px;
+  padding:15px
+}
+
+.stat b{
+  font-size:27px
+}
+
+.stat span{
+  display:block;
+  color:#959ba7;
+  font-size:13px;
+  margin-top:4px
+}
+
+.empty{
+  color:#9299a6;
+  text-align:center;
+  padding:30px 5px
+}
+
+.analysis{
+  white-space:pre-wrap;
+  line-height:1.55;
+  background:#0e1014;
+  border-radius:12px;
+  padding:13px;
+  margin-top:12px;
+  color:#dfe3e8
+}
+
+.tiny{
+  font-size:13px;
+  color:#858c98;
+  line-height:1.5
+}
+
+.shareBtn{background:#1f9d62;color:#fff}
+.copyBtn{background:#2d6cdf;color:#fff}
+.statusMsg{font-size:12px;color:#9be5b1;margin-top:8px}
+@media(max-width:650px){
+  .grid{
+    grid-template-columns:1fr
+  }
+
+  .wrap{
+    padding:14px
+  }
+
+  .brand h1{
+    font-size:27px
+  }
+
+  .brand p{
+    font-size:16px
+  }
+
+  .row{
+    align-items:flex-start
+  }
+
+  .score{
+    flex:0 0 auto
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <div class="top">
+    <div class="brand">
+      <h1>Operador Clientes</h1>
+      <p>Encuentra negocios sin web y conviértelos en prospectos.</p>
+    </div>
+
+    <div class="pill" id="mode">
+      Listo
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="active" onclick="tab('buscar',this)">
+      Buscar
+    </button>
+
+    <button onclick="tab('prospectos',this)">
+      Prospectos
+    </button>
+  </div>
+
+
+  <section id="buscar">
+
+    <div class="card">
+
+      <div class="grid">
+
+        <div>
+          <label>Sector</label>
+          <input
+            id="sector"
+            value="talleres mecánicos"
+            placeholder="Ej. reformas, restaurantes, clínicas"
+          />
+        </div>
+
+        <div>
+          <label>Zona</label>
+          <input
+            id="zone"
+            value="Murcia"
+            placeholder="Ej. Murcia, Cartagena, Jumilla"
+          />
+        </div>
+
+        <div>
+          <label>Resultados</label>
+
+          <select id="max">
+            <option>10</option>
+            <option selected>20</option>
+          </select>
+        </div>
+
+      </div>
+
+      <label class="check">
+        <input
+          type="checkbox"
+          id="only"
+          checked
+        />
+
+        Mostrar sólo negocios sin web asociada
+      </label>
+
+      <div style="margin-top:16px">
+        <button onclick="searchBusinesses(event)">
+          Buscar oportunidades
+        </button>
+      </div>
+
+      <p class="tiny">
+        Consejo: busca un sector y un municipio cada vez.
+        Menos ruido, más clientes que realmente puedas llamar.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="stats">
+
+        <div class="stat">
+          <b id="found">0</b>
+          <span>Encontrados</span>
+        </div>
+
+        <div class="stat">
+          <b id="noWeb">0</b>
+          <span>Sin web</span>
+        </div>
+
+        <div class="stat">
+          <b id="hot">0</b>
+          <span>8-10 puntos</span>
+        </div>
+
+      </div>
+
+      <div id="results" class="empty">
+        Haz una búsqueda para empezar.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section
+    id="prospectos"
+    class="hidden"
+  >
+
+    <div class="card">
+
+      <h2 style="margin-top:0">
+        Prospectos guardados
+      </h2>
+
+      <div
+        id="prospects"
+        class="empty"
+      >
+        Todavía no has guardado ninguno.
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<script>
+
+let current = [];
+
+
+function tab(id, btn){
+
+  document
+    .querySelectorAll('.tabs button')
+    .forEach(
+      x => x.classList.remove('active')
+    );
+
+  btn.classList.add('active');
+
+  document
+    .getElementById('buscar')
+    .classList.toggle(
+      'hidden',
+      id !== 'buscar'
+    );
+
+  document
+    .getElementById('prospectos')
+    .classList.toggle(
+      'hidden',
+      id !== 'prospectos'
+    );
+
+  if(id === 'prospectos'){
+    loadProspects();
+  }
+}
+
+
+function esc(s=''){
+
+  return String(s).replace(
+    /[&<>"']/g,
+    c => ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#39;'
+    }[c])
+  );
+}
+
+
+function demoUrl(
+  b,
+  sector='',
+  zone=''
+){
+
+  const p = new URLSearchParams({
+    name: b.name || 'Mi negocio',
+    phone: b.phone || '',
+    sector: sector || b.sector || '',
+    zone: zone || b.zone || '',
+    address: b.address || '',
+    rating: b.rating || '',
+    reviews: b.reviews || ''
+  });
+
+  return '/demo?' + p.toString();
+}
+
+
+function openDemoBusiness(
+  b,
+  sector='',
+  zone=''
+){
+
+  window.open(
+    demoUrl(
+      b,
+      sector,
+      zone
+    ),
+    '_blank'
+  );
+}
+
+
+async function searchBusinesses(ev){
+
+  const btn = ev.currentTarget;
+
+  btn.disabled = true;
+  btn.textContent = 'Buscando…';
+
+  const sector =
+    document
+      .getElementById('sector')
+      .value
+      .trim();
+
+  const zone =
+    document
+      .getElementById('zone')
+      .value
+      .trim();
+
+  try{
+
+    const r = await fetch(
+      '/api/search',
+      {
+        method:'POST',
+
+        headers:{
+          'Content-Type':
+          'application/json'
+        },
+
+        body:JSON.stringify({
+          sector,
+          zone,
+          only_without_website:
+            document
+              .getElementById('only')
+              .checked,
+
+          max_results:
+            +document
+              .getElementById('max')
+              .value
+        })
+      }
+    );
+
+    const data = await r.json();
+
+    if(!r.ok){
+      throw new Error(
+        data.detail || 'Error'
+      );
+    }
+
+    current = data.items;
+
+    document
+      .getElementById('mode')
+      .textContent =
+        data.mode === 'demo'
+        ? 'Modo demo'
+        : 'Datos reales';
+
+    renderResults();
+
+  }catch(e){
+
+    document
+      .getElementById('results')
+      .innerHTML =
+        '<div class="empty">'
+        + esc(e.message)
+        + '</div>';
+
+  }finally{
+
+    btn.disabled = false;
+
+    btn.textContent =
+      'Buscar oportunidades';
+  }
+}
+
+
+function renderResults(){
+
+  document
+    .getElementById('found')
+    .textContent =
+      current.length;
+
+  document
+    .getElementById('noWeb')
+    .textContent =
+      current.filter(
+        x => !x.website
+      ).length;
+
+  document
+    .getElementById('hot')
+    .textContent =
+      current.filter(
+        x => x.score >= 8
+      ).length;
+
+  const box =
+    document
+      .getElementById('results');
+
+  if(!current.length){
+
+    box.innerHTML =
+      '<div class="empty">'
+      + 'No encontré resultados con esos filtros.'
+      + '</div>';
+
+    return;
+  }
+
+  box.className = '';
+
+  box.innerHTML =
+    current
+      .map(
+        (b,i) => `
+
+    <div class="result">
+
+      <div class="row">
+
+        <div>
+
+          <h3>
+            ${esc(b.name)}
+          </h3>
+
+          <div class="meta">
+
+            ${esc(b.address)}
+            <br>
+
+            ${
+              b.phone
+              ? '📞 ' + esc(b.phone)
+              : 'Sin teléfono'
+            }
+
+            · ⭐ ${esc(b.rating)}
+
+            (${esc(b.reviews)} reseñas)
+
+            <br>
+
+            ${
+              b.website
+              ? '<span class="warn">Tiene web</span>'
+              : '<span class="good">Sin web asociada</span>'
+            }
+
+          </div>
+
+        </div>
+
+        <div class="score">
+          ${b.score}/10
+        </div>
+
+      </div>
+
+
+      <div
+        class="meta"
+        style="margin-top:9px"
+      >
+
+        ${
+          b.reasons
+            .map(esc)
+            .join(' · ')
+        }
+
+      </div>
+
+
+      <div class="actions">
+
+        <button
+          class="secondary"
+          onclick="saveProspect(${i},this)"
+        >
+          Guardar
+        </button>
+
+
+        <button
+          class="demoBtn"
+          onclick="openDemo(${i})"
+        >
+          Crear demo
+        </button>
+
+
+        <button
+          class="ghost"
+          onclick="analyze(${i},this)"
+        >
+          Analizar con IA
+        </button>
+
+
+        ${
+          b.maps_url
+          ? `
+          <a
+            class="ghost"
+            href="${esc(b.maps_url)}"
+            target="_blank"
+          >
+            Maps
+          </a>
+          `
+          : ''
+        }
+
+      </div>
+
+
+      <div id="a${i}">
+      </div>
+
+    </div>
+
+  `
+      )
+      .join('');
+}
+
+
+async function saveProspect(
+  i,
+  btn
+){
+
+  const r = await fetch(
+    '/api/prospects',
+    {
+
+      method:'POST',
+
+      headers:{
+        'Content-Type':
+        'application/json'
+      },
+
+      body:JSON.stringify({
+
+        business:
+          current[i],
+
+        sector:
+          document
+            .getElementById('sector')
+            .value,
+
+        zone:
+          document
+            .getElementById('zone')
+            .value
+      })
+    }
+  );
+
+  if(r.ok && btn){
+
+    btn.textContent =
+      'Guardado ✓';
+
+    btn.disabled =
+      true;
+  }
+}
+
+
+function openDemo(i){
+
+  openDemoBusiness(
+
+    current[i],
+
+    document
+      .getElementById('sector')
+      .value,
+
+    document
+      .getElementById('zone')
+      .value
+  );
+}
+
+
+async function analyze(
+  i,
+  btn
+){
+
+  btn.disabled = true;
+
+  btn.textContent =
+    'Analizando…';
+
+  const r =
+    await fetch(
+      '/api/analyze',
+      {
+
+        method:'POST',
+
+        headers:{
+          'Content-Type':
+          'application/json'
+        },
+
+        body:JSON.stringify({
+          business:
+            current[i]
+        })
+      }
+    );
+
+  const d =
+    await r.json();
+
+  document
+    .getElementById(
+      'a' + i
+    )
+    .innerHTML =
+      '<div class="analysis">'
+      + esc(
+          d.text
+          || d.detail
+          || 'Sin respuesta'
+        )
+      + '</div>';
+
+  btn.disabled = false;
+
+  btn.textContent =
+    'Analizar con IA';
+}
+
+
+async function loadProspects(){
+  const r = await fetch('/api/prospects');
+  const data = await r.json();
+  const box = document.getElementById('prospects');
+
+  if(!data.length){
+    box.innerHTML = '<div class="empty">Todavía no has guardado ninguno.</div>';
+    return;
+  }
+
+  box.className = '';
+  box.innerHTML = data.map(b => `
+    <div class="result">
+      <div class="row">
+        <div>
+          <h3>${esc(b.name)}</h3>
+          <div class="meta">
+            ${esc(b.address || '')}<br>
+            ${esc(b.phone || 'Sin teléfono')}
+            · ${esc(b.sector || '')}
+            · ${esc(b.zone || '')}
+          </div>
+        </div>
+        <div class="score">${b.score}/10</div>
+      </div>
+
+      <div class="actions">
+        <select onchange="status(${b.id},this.value)" style="width:auto" id="status-${b.id}">
+          <option value="nuevo" ${b.status==='nuevo'?'selected':''}>nuevo</option>
+          <option value="contactar" ${b.status==='contactar'?'selected':''}>contactar</option>
+          <option value="contactado" ${b.status==='contactado'?'selected':''}>contactado</option>
+          <option value="demo_enviada" ${b.status==='demo_enviada'?'selected':''}>demo enviada</option>
+          <option value="interesado" ${b.status==='interesado'?'selected':''}>interesado</option>
+          <option value="cliente" ${b.status==='cliente'?'selected':''}>cliente</option>
+          <option value="descartado" ${b.status==='descartado'?'selected':''}>descartado</option>
+        </select>
+
+        <button class="demoBtn" onclick="openSavedDemo(${b.id})">🌐 Abrir demo</button>
+        <button class="copyBtn" onclick="copyDemoLink(${b.id},this)">📋 Copiar enlace</button>
+        <button class="shareBtn" onclick="shareDemoWhatsApp(${b.id},${JSON.stringify(b.name||'')},${JSON.stringify(b.phone||'')})">💬 Enviar demo</button>
+
+        ${b.maps_url ? `<a class="ghost" href="${esc(b.maps_url)}" target="_blank">Maps</a>` : ''}
+      </div>
+      <div class="statusMsg" id="msg-${b.id}"></div>
+    </div>
+  `).join('');
+}
+
+function savedDemoUrl(id){
+  return location.origin + '/demo/' + id;
+}
+
+function openSavedDemo(id){
+  window.open(savedDemoUrl(id),'_blank');
+}
+
+async function copyDemoLink(id,btn){
+  const url=savedDemoUrl(id);
+  try{
+    await navigator.clipboard.writeText(url);
+    const old=btn.textContent;
+    btn.textContent='Copiado ✓';
+    const msg=document.getElementById('msg-'+id);
+    if(msg) msg.textContent='Enlace de la demo copiado.';
+    setTimeout(()=>btn.textContent=old,1600);
+  }catch(e){
+    window.prompt('Copia este enlace:',url);
+  }
+}
+
+async function shareDemoWhatsApp(id,name,phone){
+  const url=savedDemoUrl(id);
+  const message=`Hola, he preparado una propuesta de cómo podría quedar una página web para ${name || 'vuestro negocio'}. Puedes verla aquí: ${url}`;
+
+  await status(id,'demo_enviada');
+  const select=document.getElementById('status-'+id);
+  if(select) select.value='demo_enviada';
+
+  let n=String(phone||'').replace(/\D/g,'');
+  if(n.length===9) n='34'+n;
+
+  const target=n
+    ? `https://wa.me/${n}?text=${encodeURIComponent(message)}`
+    : `https://wa.me/?text=${encodeURIComponent(message)}`;
+
+  window.open(target,'_blank');
+}
+
+
+async function status(
+  id,
+  status
+){
+
+  await fetch(
+    '/api/prospects/'
+    + id
+    + '/status',
+    {
+
+      method:'PATCH',
+
+      headers:{
+        'Content-Type':
+        'application/json'
+      },
+
+      body:JSON.stringify({
+        status
+      })
+    }
+  );
+}
+
+
+if(
+  'serviceWorker'
+  in navigator
+){
+
+  navigator
+    .serviceWorker
+    .register('/sw.js');
+}
+
+</script>
+
+</body>
+</html>
