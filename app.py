@@ -530,3 +530,45 @@ async def demo():
     return FileResponse(
         BASE / "static" / "demo.html"
     )
+
+
+@app.get("/demo/{pid}")
+async def demo_prospect(pid: int):
+    con = db()
+
+    prospect = con.execute(
+        "SELECT * FROM prospects WHERE id=?",
+        (pid,)
+    ).fetchone()
+
+    con.close()
+
+    if not prospect:
+        raise HTTPException(
+            status_code=404,
+            detail="Prospecto no encontrado"
+        )
+
+    return FileResponse(
+        BASE / "static" / "demo.html"
+    )
+
+
+@app.get("/api/demo/{pid}")
+def demo_data(pid: int):
+    con = db()
+
+    prospect = con.execute(
+        "SELECT * FROM prospects WHERE id=?",
+        (pid,)
+    ).fetchone()
+
+    con.close()
+
+    if not prospect:
+        raise HTTPException(
+            status_code=404,
+            detail="Prospecto no encontrado"
+        )
+
+    return dict(prospect)
