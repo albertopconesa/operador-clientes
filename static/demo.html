@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{NOMBRE_NEGOCIO}}</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 20px;
+      opacity: 0.85;
+    }
+
+    .botones {
+      margin-top: 25px;
+    }
+
+    .botones a {
+      display: inline-block;
+      margin: 8px;
+      padding: 14px 22px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .llamar {
+      background: white;
+      color: #111;
+    }
+
+    .whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 50px 20px;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 25px;
+    }
+
+    .servicios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .servicio {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 15px rgba(0,0,0,.07);
+    }
+
+    .cta {
+      background: #111;
+      color: white;
+      text-align: center;
+      border-radius: 14px;
+      padding: 40px 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>{{NOMBRE_NEGOCIO}}</h1>
+  <p>{{SECTOR}} en {{LOCALIDAD}}</p>
+
+  <div class="botones">
+    <a class="llamar" href="tel:{{TELEFONO}}">
+      Llamar
+    </a>
+
+    <a class="whatsapp"
+       href="https://wa.me/{{WHATSAPP}}"
+       target="_blank">
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<section>
+  <h2>Sobre nosotros</h2>
+  <p>
+    Somos una empresa especializada en {{SECTOR}} en {{LOCALIDAD}}.
+    Ofrecemos atención profesional, presupuestos personalizados y soluciones adaptadas a cada cliente.
+  </p>
+</section>
+
+<section>
+  <h2>Nuestros servicios</h2>
+
+  <div class="servicios">
+
+    <div class="servicio">
+      <h3>{{SERVICIO_1}}</h3>
+      <p>Servicio profesional adaptado a las necesidades de cada cliente.</p>
+    </div>
+
+    <div class="servicio">
+      <h3>{{SERVICIO_2}}</h3>
+      <p>Presupuesto personalizado y atención cercana.</p>
+    </div>
+
+    <div class="servicio">
+      <h3>{{SERVICIO_3}}</h3>
+      <p>Trabajo rápido, profesional y con atención directa.</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="cta">
+    <h2>¿Necesitas presupuesto?</h2>
+    <p>Contacta con nosotros sin compromiso.</p>
+
+    <a class="whatsapp"
+       href="https://wa.me/{{WHATSAPP}}"
+       target="_blank">
+      Pedir presupuesto por WhatsApp
+    </a>
+  </div>
+</section>
+
+<section>
+  <h2>Contacto</h2>
+
+  <p><strong>Teléfono:</strong> {{TELEFONO}}</p>
+  <p><strong>Localidad:</strong> {{LOCALIDAD}}</p>
+</section>
+
+<footer>
+  © {{NOMBRE_NEGOCIO}}
+</footer>
+
+</body>
+</html>
