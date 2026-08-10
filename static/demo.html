@@ -1,197 +1,260 @@
-<!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Demo | Inicio</title>
-<style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071521"><title>Demo profesional</title><style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 :root{
-  --accent:#ef5b2a;--dark:#0d1014;--dark2:#181d24;--soft:#f4f6f8;
-  --card:#fff;--text:#20242a;--muted:#68717d;--line:#e4e7eb
+--accent:#0d6efd;--accent2:#0a4a9f;--dark:#071521;--dark2:#0d2a43;
+--text:#17202b;--muted:#677383;--soft:#f4f7fb;--line:#dfe6ee;--white:#fff
 }
-body{font-family:Inter,Arial,sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
-a{text-decoration:none}
-.nav{position:sticky;top:0;z-index:50;background:rgba(9,12,16,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
-.nav-inner{width:min(1120px,100%);margin:auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.logo{color:#fff;font-weight:900;font-size:17px;max-width:250px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body{font-family:Inter,Arial,sans-serif;color:var(--text);background:white;line-height:1.5;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button,input,textarea{font:inherit}
+.demo-note{background:#fff3cd;color:#6c5600;padding:9px 16px;text-align:center;font-size:12px;border-bottom:1px solid #eadb98}
+.nav{position:sticky;top:0;z-index:100;background:rgba(5,22,37,.96);backdrop-filter:blur(14px);box-shadow:0 4px 18px rgba(0,0,0,.12)}
+.nav-inner{width:min(1180px,100%);margin:auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;color:white;font-weight:900;max-width:280px}
+.brand-badge{width:40px;height:40px;border-radius:12px;background:var(--accent);display:grid;place-items:center;font-size:20px;flex:0 0 auto}
+.brand-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-text small{display:block;font-size:10px;color:#b8c8d8;font-weight:500}
 .nav-links{display:flex;align-items:center;gap:18px}
-.nav-links a{color:#d8dde4;font-size:14px;font-weight:700}
-.nav-links a.active,.nav-links a:hover{color:#fff}
-.nav-cta{background:var(--accent);color:#fff!important;padding:10px 14px;border-radius:10px}
-.menu-btn{display:none;width:44px;height:42px;border:1px solid rgba(255,255,255,.16);background:transparent;color:white;border-radius:10px;font-size:22px}
-.wrap{width:min(1120px,100%);margin:auto;padding:76px 22px}
-.hero{min-height:72vh;position:relative;display:flex;align-items:center;color:#fff;background-size:cover;background-position:center;padding:80px 22px}
-.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,8,12,.94),rgba(5,8,12,.62),rgba(5,8,12,.2))}
-.hero-inner{width:min(1120px,100%);margin:auto;position:relative;z-index:2}
-.badge{display:inline-block;padding:9px 14px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.25);border-radius:999px;font-size:14px;margin-bottom:20px}
-.hero h1{font-size:clamp(42px,8vw,76px);max-width:850px;line-height:1.02;letter-spacing:-2px}
-.hero p{max-width:720px;margin-top:22px;color:#e1e5e9;font-size:clamp(18px,3vw,23px);line-height:1.55}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:14px 19px;border-radius:12px;font-weight:800;border:none;cursor:pointer;transition:.25s}
+.nav-links a{color:#dbe5ee;font-size:13px;font-weight:760}
+.nav-links a:hover,.nav-links a.active{color:white}
+.nav-cta{background:var(--accent);padding:10px 14px;border-radius:9px;color:white!important}
+.menu-btn{display:none;background:transparent;color:white;border:1px solid rgba(255,255,255,.18);width:44px;height:42px;border-radius:10px;font-size:22px}
+.hero{min-height:650px;position:relative;display:flex;align-items:center;background-size:cover;background-position:center;color:white}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,15,27,.94) 0%,rgba(3,15,27,.72) 48%,rgba(3,15,27,.18) 100%)}
+.hero-inner{position:relative;z-index:2;width:min(1180px,100%);margin:auto;padding:76px 22px}
+.kicker{text-transform:uppercase;letter-spacing:1.4px;font-weight:900;font-size:13px;color:#b6d8ff;margin-bottom:12px}
+.hero h1{font-size:clamp(46px,7.5vw,78px);max-width:850px;line-height:1.01;letter-spacing:-2px}
+.hero p{max-width:720px;margin-top:20px;color:#e1e9f1;font-size:clamp(18px,2.4vw,22px);line-height:1.55}
+.actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:14px 19px;border-radius:10px;font-weight:850;border:none;cursor:pointer;transition:.2s}
 .btn:hover{transform:translateY(-2px)}
-.primary{background:var(--accent);color:#fff}
-.secondary{background:#fff;color:#111}
-.darkbtn{background:var(--dark);color:#fff}
-.eyebrow{font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:900;color:var(--accent);margin-bottom:10px}
-.section-title{font-size:clamp(30px,5vw,44px);letter-spacing:-1px}
-.lead{max-width:780px;color:var(--muted);font-size:17px;line-height:1.7;margin-top:14px}
-.services{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.service{background:var(--soft);padding:26px;border-radius:20px;border:1px solid #eceff2;transition:.3s}
-.service:hover{transform:translateY(-6px);box-shadow:0 18px 45px rgba(0,0,0,.08)}
-.service-icon{font-size:34px}.service h3{font-size:20px;margin:17px 0 9px}.service p{color:var(--muted);line-height:1.55}
-.task-grid{margin-top:30px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.task-item{display:flex;align-items:center;gap:12px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff}
-.checkmark{width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;flex:0 0 auto}
-.works{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:34px}
-.work-main,.work-small{min-height:420px;border-radius:22px;background-position:center;background-size:cover;position:relative;overflow:hidden}
-.work-side{display:grid;grid-template-rows:1fr 1fr;gap:18px}.work-small{min-height:200px}
-.work-overlay{position:absolute;inset:auto 0 0 0;padding:22px;color:white;background:linear-gradient(transparent,rgba(0,0,0,.8))}
+.btn-primary{background:var(--accent);color:white}
+.btn-secondary{background:white;color:#0d1b28}
+.btn-outline{border:1px solid rgba(255,255,255,.38);background:rgba(0,0,0,.15);color:white}
+.trust-strip{width:min(1080px,calc(100% - 32px));margin:-36px auto 0;position:relative;z-index:5;background:var(--dark);color:white;border-radius:14px;box-shadow:0 16px 38px rgba(0,0,0,.18);display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}
+.trust-item{padding:19px;display:flex;gap:11px;align-items:center;border-right:1px solid rgba(255,255,255,.08)}
+.trust-item:last-child{border-right:0}
+.trust-icon{font-size:26px;color:#72adff}
+.trust-item b{display:block;font-size:13px}
+.trust-item span{display:block;color:#b7c5d2;font-size:11px;margin-top:2px}
+.wrap{width:min(1180px,100%);margin:auto;padding:80px 22px}
+.center{text-align:center}
+.eyebrow{text-transform:uppercase;letter-spacing:1.4px;font-size:12px;font-weight:900;color:var(--accent);margin-bottom:8px}
+.section-title{font-size:clamp(31px,4.4vw,44px);letter-spacing:-1px;line-height:1.08}
+.lead{max-width:780px;color:var(--muted);font-size:16px;line-height:1.72;margin-top:12px}
+.center .lead{margin-left:auto;margin-right:auto}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px;margin-top:34px}
+.service-card{background:white;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(30,60,90,.06);transition:.25s}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 17px 38px rgba(30,60,90,.12)}
+.service-photo{height:160px;background-size:cover;background-position:center}
+.service-body{padding:19px}
+.service-icon{width:46px;height:46px;border-radius:50%;background:#eaf3ff;color:var(--accent);display:grid;place-items:center;font-size:22px;border:4px solid white;margin-top:-42px;margin-bottom:12px}
+.service-card h3{font-size:18px;margin-bottom:7px}
+.service-card p{font-size:13px;color:var(--muted);line-height:1.55}
+.card-link{display:inline-block;margin-top:11px;color:var(--accent);font-weight:850;font-size:13px}
+.section-soft{background:var(--soft)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+.photo-panel{min-height:450px;border-radius:18px;background-size:cover;background-position:center;box-shadow:0 16px 42px rgba(0,0,0,.12)}
+.feature-list{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:24px}
+.feature{background:white;border:1px solid var(--line);border-radius:11px;padding:13px;font-size:13px;font-weight:760}
+.work-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:31px}
+.work{height:240px;border-radius:13px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.work:after{content:"";position:absolute;inset:42% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.8))}
+.work span{position:absolute;left:15px;bottom:14px;color:white;font-weight:850;z-index:2}
+.location-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;margin-top:30px}
+.map-card,.info-card{background:white;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 8px 28px rgba(30,60,90,.07)}
+.map-card iframe{width:100%;height:340px;border:0;display:block}
+.info-card{padding:28px}
+.info-card h3{font-size:24px}
+.info-card p{color:var(--muted);margin-top:8px}
+.info-line{padding:13px 0;border-bottom:1px solid var(--line);font-size:14px}
+.info-line:last-child{border-bottom:0}
 .proof{background:linear-gradient(135deg,var(--dark),var(--dark2));color:white}
-.proof-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
-.rating{font-size:72px;font-weight:900;line-height:1}.stars{font-size:25px;color:#ffd45c;margin:10px 0}.proof-copy{color:#c2c8d0;line-height:1.7}
-.budget{background:var(--soft)}
-.budget-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:start;margin-top:34px}
-.budget-info{background:var(--dark);color:white;border-radius:22px;padding:28px}
-.budget-info p{color:#c2c8d0;line-height:1.6;margin-top:12px}
-.form-card{background:#fff;padding:26px;border-radius:22px;border:1px solid var(--line)}
-.field{margin-bottom:16px}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:7px}
-.field input,.field textarea{width:100%;border:1px solid #d8dde4;border-radius:11px;padding:13px;font:inherit;background:#fff}
+.proof-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center}
+.proof p{color:#bfd0df}
+.rating{font-size:72px;font-weight:950;line-height:1}
+.stars{color:#ffcb52;font-size:24px;margin:8px 0}
+.task-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:28px}
+.task{background:white;border:1px solid var(--line);border-radius:11px;padding:14px;display:flex;gap:10px;align-items:center;font-weight:760;font-size:14px}
+.tick{width:28px;height:28px;border-radius:50%;background:#eaf3ff;color:var(--accent);display:grid;place-items:center;flex:0 0 auto}
+.cta-band{background:linear-gradient(90deg,var(--accent2),var(--accent));color:white;border-radius:14px;padding:24px 26px;margin-top:36px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.cta-band p{color:#dfedff;font-size:13px;margin-top:4px}
+.budget-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:27px;margin-top:31px}
+.form-card,.budget-info{background:white;border:1px solid var(--line);border-radius:14px;padding:25px;box-shadow:0 8px 26px rgba(30,60,90,.06)}
+.budget-info{background:var(--dark);color:white}
+.budget-info p{color:#bed0df;margin-top:8px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:12px;font-weight:850;margin-bottom:6px}
+.field input,.field textarea{width:100%;border:1px solid #d5dee7;border-radius:9px;padding:12px;background:white}
 .field textarea{min-height:110px;resize:vertical}
-.budget-tasks{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:10px 0 18px}
-.budget-task{display:flex;gap:9px;align-items:flex-start;padding:11px;border:1px solid #e1e5e9;border-radius:11px;background:#fafbfc}
-.contact-card{margin-top:30px;border-radius:22px;background:var(--soft);padding:28px}.contact-line{padding:13px 0;border-bottom:1px solid #dfe3e7}.contact-line:last-child{border-bottom:0}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
-.demo-note{padding:12px 18px;text-align:center;background:#fff3cd;color:#665200;font-size:12px;border-bottom:1px solid #eedb93}
-footer{padding:34px 22px;text-align:center;color:#929aa5;background:#080a0d;font-size:13px}
-@media(max-width:820px){
- .nav-links{display:none;position:absolute;top:68px;left:12px;right:12px;flex-direction:column;align-items:stretch;padding:15px;border-radius:14px;background:#11161c;border:1px solid #2b313a}
- .nav-links.open{display:flex}.menu-btn{display:block}.services,.task-grid,.works,.proof-grid,.budget-grid,.budget-tasks{grid-template-columns:1fr}
- .hero{min-height:68vh}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.check-option{border:1px solid var(--line);background:#f9fbfd;border-radius:9px;padding:10px;display:flex;gap:8px;align-items:flex-start;font-size:13px}
+.floating-wa{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#25D366;color:white;display:grid;place-items:center;font-size:26px;z-index:90;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+footer{background:#061423;color:white;padding:44px 22px}
+.footer-grid{width:min(1180px,100%);margin:auto;display:grid;grid-template-columns:1.25fr .75fr 1fr;gap:30px}
+.footer-grid p,.footer-grid a{color:#aebdcb;font-size:13px}
+.footer-links{display:grid;gap:8px;margin-top:10px}
+.reveal{opacity:0;transform:translateY(26px);transition:.65s}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){
+.service-grid{grid-template-columns:repeat(2,1fr)}.work-grid{grid-template-columns:repeat(2,1fr)}
+.trust-strip{grid-template-columns:repeat(2,1fr)}.split,.location-grid,.proof-grid,.budget-grid{grid-template-columns:1fr}
+.task-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:720px){
+.nav-links{display:none;position:absolute;top:66px;left:10px;right:10px;flex-direction:column;align-items:stretch;background:#07192b;padding:14px;border-radius:11px;border:1px solid #1e3b56}
+.nav-links.open{display:flex}.menu-btn{display:block}.nav-cta{display:none}.hero{min-height:570px}
+.trust-strip{grid-template-columns:1fr;margin-top:-22px}.trust-item{border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}
+.service-grid,.work-grid,.task-grid,.feature-list,.check-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr}.cta-band{flex-direction:column;align-items:flex-start}
 }
 </style></head><body>
-<div class="demo-note">DEMO COMERCIAL · Las imágenes son orientativas hasta que el negocio facilite fotografías propias.</div>
-<nav class="nav">
- <div class="nav-inner">
-  <a class="logo" id="navName" data-nav="/demo">Negocio</a>
-  <button class="menu-btn" id="menuBtn">☰</button>
-  <div class="nav-links" id="navLinks">
-   <a data-nav="/demo">Inicio</a>
-   <a data-nav="/static/demo-servicios.html">Servicios</a>
-   <a data-nav="/static/demo-trabajos.html">Trabajos</a>
-   <a data-nav="/static/demo-presupuesto.html">Presupuesto y contacto</a>
-   <a data-nav="/static/demo-presupuesto.html" class="nav-cta">Pedir presupuesto</a>
-  </div>
- </div>
-</nav>
+<div class="demo-note">DEMO COMERCIAL · Fotografías orientativas. En la web definitiva se usarían imágenes reales del negocio.</div>
+<nav class="nav"><div class="nav-inner">
+<a class="brand" data-nav="/demo"><span class="brand-badge">⌂</span><span class="brand-text"><span data-name>Tu empresa</span><small>Servicios profesionales</small></span></a>
+<button class="menu-btn" id="menuBtn">☰</button>
+<div class="nav-links" id="navLinks">
+<a data-nav="/demo">Inicio</a>
+<a data-nav="/static/demo-servicios.html">Servicios</a>
+<a data-nav="/static/demo-trabajos.html">Trabajos</a>
+<a data-nav="/static/demo-presupuesto.html">Presupuesto</a>
+<a data-nav="/static/demo-presupuesto.html#contacto">Contacto</a>
+</div>
+<a class="nav-cta" data-call>📞 <span data-phone></span></a>
+</div></nav>
 
-<section class="hero" id="hero"><div class="hero-inner reveal">
- <div class="badge" id="sectorBadge">Negocio local</div><h1 id="businessName">Tu negocio</h1><p id="heroText"></p>
- <div class="actions"><a class="btn secondary" data-call>📞 Llamar</a><a class="btn primary" data-wa target="_blank">💬 WhatsApp</a><a class="btn primary" id="budgetHero">📝 Pedir presupuesto</a></div>
-</div></section>
-<section class="wrap reveal"><div class="eyebrow">Resumen</div><h2 class="section-title">Todo lo importante en un vistazo</h2><p class="lead">Una web pensada para convertir búsquedas en llamadas, mensajes y solicitudes de presupuesto.</p><div class="services" id="services"></div></section>
-<section class="proof"><div class="wrap proof-grid reveal"><div><div class="eyebrow">Confianza</div><h2 class="section-title">Una reputación que merece verse</h2><p class="proof-copy">Las valoraciones reales ayudan a convencer a nuevos clientes.</p></div><div><div class="rating" id="rating">—</div><div class="stars">★★★★★</div><p id="reviews" class="proof-copy"></p></div></div></section>
+<section class="hero" id="hero"><div class="hero-inner reveal"><div class="kicker" id="sectorTitle"></div><h1 id="businessName"></h1><p id="heroText"></p><div class="actions"><a class="btn btn-primary" id="servicesBtn">Ver servicios</a><a class="btn btn-outline" id="quoteBtn">Pedir presupuesto</a></div></div></section>
+<div class="trust-strip reveal"><div class="trust-item"><div class="trust-icon">◷</div><div><b>Servicio rápido</b><span>Atención profesional</span></div></div><div class="trust-item"><div class="trust-icon">👥</div><div><b>Profesionales</b><span>Experiencia y confianza</span></div></div><div class="trust-item"><div class="trust-icon">🛡</div><div><b>Trabajo cuidado</b><span>Calidad y seguimiento</span></div></div><div class="trust-item"><div class="trust-icon">📝</div><div><b>Presupuesto</b><span>Consulta sin compromiso</span></div></div></div>
 
-<footer>Demo comercial · No representa todavía la web oficial del negocio.</footer>
+<section class="wrap center reveal"><div class="eyebrow">Servicios</div><h2 class="section-title">¿Qué tipo de servicio necesitas?</h2><p class="lead">Una selección visual adaptada automáticamente al tipo de empresa.</p><div class="service-grid" id="serviceGrid"></div></section>
+
+<section class="section-soft"><div class="wrap split reveal"><div><div class="eyebrow">Profesionalidad</div><h2 class="section-title">Todo lo que el cliente necesita entender antes de llamar</h2><p class="lead">Servicios claros, ejemplos, ubicación, reputación y una vía directa para pedir presupuesto desde el móvil.</p><div class="feature-list" id="features"></div></div><div class="photo-panel" id="featurePhoto"></div></div></section>
+
+<section class="wrap reveal"><div class="center"><div class="eyebrow">Trabajos</div><h2 class="section-title">Trabajos recientes</h2><p class="lead">Fotografías orientativas del sector. En la versión definitiva se sustituirían por trabajos reales.</p></div><div class="work-grid" id="works"></div><div class="center"><a class="btn btn-primary" style="margin-top:25px" id="worksBtn">Ver todos los trabajos</a></div></section>
+
+<section class="proof"><div class="wrap proof-grid reveal"><div><div class="eyebrow">Opiniones</div><h2 class="section-title">La reputación también vende</h2><p>Las valoraciones reales ayudan a transmitir confianza antes de que el cliente contacte.</p></div><div><div class="rating" id="rating"></div><div class="stars">★★★★★</div><p id="reviews"></p></div></div></section>
+
+<section class="section-soft"><div class="wrap reveal"><div class="center"><div class="eyebrow">Ubicación</div><h2 class="section-title">¿Dónde estamos?</h2><p class="lead">Mapa integrado para que el cliente encuentre el negocio rápidamente.</p></div><div class="location-grid"><div class="map-card"><iframe id="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div><div class="info-card"><h3 data-name></h3><p>Información principal del negocio.</p><div class="info-line">📍 <span id="address"></span></div><div class="info-line">🗺️ <span id="zone"></span></div><div class="info-line">📞 <span data-phone></span></div><div class="info-line">⭐ <span id="ratingSmall"></span></div><div class="actions"><a class="btn btn-primary" data-call>📞 Llamar</a><a class="btn btn-secondary" data-wa target="_blank">💬 WhatsApp</a></div></div></div></div></section>
+
+<a class="floating-wa" data-wa target="_blank" aria-label="WhatsApp">💬</a>
+<footer><div class="footer-grid">
+<div><h3 data-name>Tu empresa</h3><p style="margin-top:8px">Demo profesional adaptable al sector y al negocio.</p></div>
+<div><h4>Enlaces</h4><div class="footer-links"><a data-nav="/demo">Inicio</a><a data-nav="/static/demo-servicios.html">Servicios</a><a data-nav="/static/demo-trabajos.html">Trabajos</a><a data-nav="/static/demo-presupuesto.html">Presupuesto</a></div></div>
+<div><h4>Contacto</h4><p style="margin-top:10px" data-phone></p><p id="footerAddress">Dirección del negocio</p></div>
+</div></footer>
 <script>
-const q = new URLSearchParams(location.search);
-const data = {
-  name:q.get("name")||"Tu negocio",
-  phone:q.get("phone")||"",
-  sector:q.get("sector")||"",
-  zone:q.get("zone")||"",
-  address:q.get("address")||"",
-  rating:q.get("rating")||"",
-  reviews:q.get("reviews")||""
-};
-function normalizePhone(phone){let n=String(phone||"").replace(/\D/g,"");if(n.length===9)n="34"+n;return n;}
-function sectorConfig(sector){
- const s=String(sector||"").toLowerCase();
- if(s.includes("taller")||s.includes("mecán")||s.includes("auto")) return {
-   accent:"#ef5b2a",title:"Taller mecánico",hero:"Mantenimiento y reparación de tu vehículo con atención profesional, rápida y cercana.",
-   photos:[
-    "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1800&q=85",
-    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85",
-    "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=85"
-   ],
-   services:[["🔧","Mecánica general","Diagnóstico, mantenimiento y reparación."],["🛞","Neumáticos y frenos","Seguridad, revisión y sustitución."],["⚙️","Diagnosis","Detección de averías y mantenimiento preventivo."],["🧊","Climatización","Revisión y carga de aire acondicionado."],["🔋","Batería y electricidad","Comprobación y reparación del sistema eléctrico."],["🧰","Pre-ITV","Revisión previa y puesta a punto."]],
-   tasks:["Cambio de aceite y filtros","Frenos","Neumáticos","Diagnosis electrónica","Batería","Embrague","Distribución","Aire acondicionado","Pre-ITV","Mantenimiento general"],
-   works:["Mantenimiento y reparación","Mecánica y diagnosis","Puesta a punto"]
- };
- if(s.includes("reforma")||s.includes("constru")||s.includes("albañ")) return {
-   accent:"#d98532",title:"Reformas y construcción",hero:"Transformamos viviendas y espacios con acabados profesionales.",
-   photos:[
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85",
-    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85",
-    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85"
-   ],
-   services:[["🏠","Reformas integrales","Viviendas, locales y espacios completos."],["🚿","Baños","Renovación moderna y funcional."],["🍳","Cocinas","Diseño y reforma de cocinas."],["🎨","Pintura","Interiores y exteriores."],["💡","Electricidad","Instalaciones y renovación."],["🚰","Fontanería","Instalaciones y reparaciones."]],
-   tasks:["Reforma integral","Reforma de baño","Reforma de cocina","Pintura","Fontanería","Electricidad","Suelos","Pladur","Carpintería","Alicatado"],
-   works:["Reforma integral","Baños y cocinas","Acabados interiores"]
- };
- if(s.includes("pelu")||s.includes("barber")||s.includes("estét")) return {
-   accent:"#a65bd4",title:"Belleza y cuidado",hero:"Tu estilo, tu imagen y tu momento.",
-   photos:[
-    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1800&q=85",
-    "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=85",
-    "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1200&q=85"
-   ],
-   services:[["✂️","Corte y estilo","Servicio personalizado."],["✨","Tratamientos","Cuidado profesional."],["🎨","Coloración","Color, mechas y cambios de imagen."],["🧔","Barba","Perfilado y cuidado."],["💅","Estética","Servicios de cuidado personal."],["📅","Reservas","Consulta disponibilidad fácilmente."]],
-   tasks:["Corte","Peinado","Coloración","Mechas","Tratamiento capilar","Barba","Manicura","Estética","Evento","Consulta"],
-   works:["Corte y estilo","Color y tratamientos","Cuidado personal"]
- };
- if(s.includes("restaur")||s.includes("caf")||s.includes("bar")) return {
-   accent:"#d84d34",title:"Restaurante",hero:"Una experiencia para disfrutar, compartir y recordar.",
-   photos:[
-    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85",
-    "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=85",
-    "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85"
-   ],
-   services:[["🍽️","Nuestra cocina","Propuesta gastronómica del establecimiento."],["🥘","Especialidades","Platos y productos destacados."],["🥂","Celebraciones","Grupos y eventos."],["📅","Reservas","Consulta disponibilidad."],["🥡","Para llevar","Opciones para recoger."],["🌿","Terraza","Espacios y ambiente."]],
-   tasks:["Reservar mesa","Consultar carta","Menú de grupo","Celebración","Comida de empresa","Terraza","Alergias","Comida para llevar","Evento privado","Consulta general"],
-   works:["Nuestra sala","Especialidades","Experiencias y eventos"]
- };
- return {
-   accent:"#3978e8",title:data.sector||"Negocio local",hero:"Servicio profesional, atención cercana y contacto directo.",
-   photos:[
-    "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=85",
-    "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=85"
-   ],
-   services:[["⭐","Servicio profesional","Soluciones adaptadas a cada cliente."],["🤝","Atención cercana","Contacto directo."],["📞","Información rápida","Consulta y presupuesto."],["🛠️","Servicio especializado","Trabajo profesional."],["📍","Servicio local","Atención en la zona."],["✅","Seguimiento","Atención posterior."]],
-   tasks:["Solicitar información","Pedir presupuesto","Servicio principal","Atención personalizada","Consulta","Mantenimiento","Asesoramiento","Servicio a domicilio","Urgencia","Otro"],
-   works:["Servicio profesional","Trabajo especializado","Atención al detalle"]
- };
+const q=new URLSearchParams(location.search);
+const data={name:q.get("name")||"Tu empresa",phone:q.get("phone")||"",sector:q.get("sector")||"",zone:q.get("zone")||"",address:q.get("address")||"",rating:q.get("rating")||"",reviews:q.get("reviews")||""};
+
+function normPhone(v){let n=String(v||"").replace(/\D/g,"");if(n.length===9)n="34"+n;return n}
+
+function configFor(sector,name){
+ const s=(sector+" "+name).toLowerCase();
+ const configs=[
+  {keys:["fontan","plomer"],accent:"#1572e8",title:"Fontanería",hero:"Soluciones rápidas y profesionales para tu hogar o negocio.",photos:[
+   "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&w=1800&q=85",
+   "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=85"
+  ],services:[["💧","Instalaciones de agua","Instalación y renovación de redes de agua."],["🔧","Reparación de fugas","Localización y reparación de averías y fugas."],["🚿","Baños y sanitarios","Montaje y reparación de grifería y sanitarios."],["🔥","Termos y calentadores","Instalación, sustitución y mantenimiento."]],tasks:["Fugas de agua","Desatascos","Grifería","Sanitarios","Termos","Calentadores","Tuberías","Reformas de baño","Instalaciones nuevas","Urgencias"]},
+  {keys:["electric"],accent:"#f1a400",title:"Electricidad",hero:"Instalaciones eléctricas seguras, eficientes y profesionales.",photos:[
+   "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1800&q=85",
+   "https://images.unsplash.com/photo-1555963966-b7ae5404b6ed?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=85"
+  ],services:[["⚡","Instalaciones eléctricas","Instalaciones nuevas y reformas."],["🧰","Cuadros eléctricos","Revisión, ampliación y sustitución."],["💡","Iluminación","Interior, exterior y LED."],["🔌","Averías","Localización y reparación de fallos."]],tasks:["Instalaciones","Cuadros eléctricos","Averías","Iluminación LED","Enchufes","Cableado","Boletines","Automatismos","Porteros","Urgencias"]},
+  {keys:["taller","mecán","auto"],accent:"#ef5b2a",title:"Taller mecánico",hero:"Mantenimiento, diagnosis y reparación para cuidar tu vehículo.",photos:[
+   "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1800&q=85",
+   "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1632823469850-1b7b1e8b7e54?auto=format&fit=crop&w=1200&q=85"
+  ],services:[["🔧","Mecánica general","Mantenimiento y reparación multimarca."],["🛞","Frenos y neumáticos","Seguridad y puesta a punto."],["⚙️","Diagnosis","Detección electrónica de averías."],["🧊","Climatización","Aire acondicionado y mantenimiento."]],tasks:["Aceite y filtros","Frenos","Neumáticos","Diagnosis","Batería","Embrague","Distribución","Aire acondicionado","Pre-ITV","Mantenimiento"]},
+  {keys:["reforma","constru","albañ"],accent:"#d98532",title:"Reformas",hero:"Reformas profesionales para transformar viviendas y negocios.",photos:[
+   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85",
+   "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
+  ],services:[["🏠","Reformas integrales","Viviendas y locales."],["🚿","Baños","Renovación funcional y moderna."],["🍳","Cocinas","Diseño y reforma."],["🎨","Acabados","Pintura, suelos y revestimientos."]],tasks:["Reforma integral","Baños","Cocinas","Pintura","Fontanería","Electricidad","Suelos","Pladur","Carpintería","Alicatado"]},
+  {keys:["climat","aire acondicionado","frío"],accent:"#1387c9",title:"Climatización",hero:"Confort, eficiencia y climatización profesional durante todo el año.",photos:[
+   "https://images.unsplash.com/photo-1631545806609-238dd9201a68?auto=format&fit=crop&w=1800&q=85",
+   "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1596558450255-7c0b7be9d56a?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1200&q=85"
+  ],services:[["❄️","Aire acondicionado","Instalación y sustitución."],["🌡️","Climatización","Soluciones para hogar y empresa."],["🧼","Mantenimiento","Limpieza y revisión."],["🔧","Reparación","Diagnosis y reparación."]],tasks:["Instalación split","Multisplit","Conductos","Mantenimiento","Carga de gas","Limpieza","Reparación","Climatización comercial","Aerotermia","Presupuesto"]},
+  {keys:["pintor","pintura"],accent:"#7a58d6",title:"Pintura profesional",hero:"Acabados cuidados para renovar viviendas, locales y fachadas.",photos:[
+   "https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=1800&q=85",
+   "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1560435650-7470a0b0eaa7?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1595814433015-e6f5ce69614e?auto=format&fit=crop&w=1200&q=85"
+  ],services:[["🎨","Pintura interior","Paredes y techos."],["🏢","Fachadas","Protección y acabado exterior."],["🧱","Alisado","Preparación de superficies."],["✨","Decoración","Acabados personalizados."]],tasks:["Pintura interior","Fachadas","Alisado","Gotelé","Esmaltado","Papel pintado","Impermeabilización","Locales","Comunidades","Presupuesto"]},
+  {keys:["jardin"],accent:"#2d8b57",title:"Jardinería",hero:"Cuidado profesional de jardines y espacios exteriores.",photos:[
+   "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=1800&q=85",
+   "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1200&q=85"
+  ],services:[["🌿","Mantenimiento","Cuidado periódico de jardines."],["✂️","Poda","Árboles, setos y arbustos."],["💧","Riego","Instalación y mantenimiento."],["🌱","Diseño","Creación y mejora de zonas verdes."]],tasks:["Mantenimiento","Poda","Riego","Césped","Árboles","Setos","Limpieza","Diseño","Comunidades","Presupuesto"]},
+  {keys:["pelu","barber","estét"],accent:"#aa56cc",title:"Belleza y cuidado",hero:"Imagen, estilo y atención personalizada.",photos:[
+   "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1800&q=85",
+   "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=85"
+  ],services:[["✂️","Corte y estilo","Servicio personalizado."],["✨","Tratamientos","Cuidado profesional."],["🎨","Coloración","Color y cambios de imagen."],["📅","Reservas","Consulta disponibilidad fácilmente."]],tasks:["Corte","Peinado","Coloración","Mechas","Tratamiento","Barba","Manicura","Estética","Evento","Consulta"]},
+  {keys:["restaur","caf","bar "],accent:"#d84d34",title:"Restaurante",hero:"Una experiencia para disfrutar, compartir y recordar.",photos:[
+   "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85",
+   "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85",
+   "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=85"
+  ],services:[["🍽️","Nuestra cocina","Propuesta gastronómica."],["🥘","Especialidades","Platos destacados."],["🥂","Celebraciones","Grupos y eventos."],["📅","Reservas","Consulta disponibilidad."]],tasks:["Reservar mesa","Consultar carta","Menú de grupo","Celebración","Comida de empresa","Terraza","Alergias","Comida para llevar","Evento privado","Consulta"]}
+ ];
+ for(const c of configs){if(c.keys.some(k=>s.includes(k)))return c}
+ return {accent:"#0d6efd",title:sector||"Servicios profesionales",hero:"Soluciones profesionales adaptadas a tus necesidades.",photos:[
+  "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=85",
+  "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85"
+ ],services:[["🛠️","Servicio profesional","Soluciones adaptadas a cada cliente."],["🤝","Atención cercana","Contacto directo y personalizado."],["✅","Calidad","Trabajo cuidado y profesional."],["📞","Presupuesto","Consulta sin compromiso."]],tasks:["Información","Presupuesto","Servicio principal","Mantenimiento","Reparación","Instalación","Urgencia","Asesoramiento","Empresa","Otro"]}
 }
-const cfg=sectorConfig(data.sector);
+const cfg=configFor(data.sector,data.name);
 document.documentElement.style.setProperty("--accent",cfg.accent);
-function qsWithData(path){return path+"?"+new URLSearchParams(data).toString();}
+document.documentElement.style.setProperty("--accent2",cfg.accent);
+
+function qs(path){return path+"?"+new URLSearchParams(data).toString()}
 function setupNav(active){
- document.querySelectorAll("[data-nav]").forEach(a=>{
-   const p=a.dataset.nav;
-   a.href=qsWithData(p);
-   if(p.includes(active))a.classList.add("active");
- });
- const name=document.getElementById("navName"); if(name)name.textContent=data.name;
- const mb=document.getElementById("menuBtn"), nl=document.getElementById("navLinks");
- if(mb&&nl){mb.addEventListener("click",()=>nl.classList.toggle("open"));nl.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nl.classList.remove("open")));}
-}
-function setupReveal(){
- const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:.12});
- document.querySelectorAll(".reveal").forEach(el=>o.observe(el));
+ document.querySelectorAll("[data-nav]").forEach(a=>{a.href=qs(a.dataset.nav);if(a.dataset.nav.includes(active))a.classList.add("active")});
+ document.querySelectorAll("[data-name]").forEach(x=>x.textContent=data.name);
+ const mb=document.getElementById("menuBtn"),nl=document.getElementById("navLinks");
+ if(mb&&nl){mb.onclick=()=>nl.classList.toggle("open");nl.querySelectorAll("a").forEach(a=>a.onclick=()=>nl.classList.remove("open"))}
 }
 function setupContact(){
- const phone=normalizePhone(data.phone), call=data.phone?"tel:"+data.phone:"#", wa=phone?"https://wa.me/"+phone:"#";
- document.querySelectorAll("[data-call]").forEach(x=>{x.href=call;if(!data.phone)x.style.display="none"});
- document.querySelectorAll("[data-wa]").forEach(x=>{x.href=wa;if(!data.phone)x.style.display="none"});
- return {phone,wa};
+ const p=normPhone(data.phone),call=data.phone?"tel:"+data.phone:"#",wa=p?"https://wa.me/"+p:"#";
+ document.querySelectorAll("[data-call]").forEach(a=>{a.href=call;if(!data.phone)a.style.display="none"});
+ document.querySelectorAll("[data-wa]").forEach(a=>{a.href=wa;if(!data.phone)a.style.display="none"});
+ document.querySelectorAll("[data-phone]").forEach(x=>x.textContent=data.phone||"Por completar");
+ return {p,wa}
 }
-
-setupNav("/demo");setupReveal();const contact=setupContact();
-
+function setupReveal(){
+ const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")}),{threshold:.1});
+ document.querySelectorAll(".reveal").forEach(el=>o.observe(el))
+}
+function mapUrl(){const loc=data.address||data.zone||"España";return "https://www.google.com/maps?q="+encodeURIComponent(loc)+"&output=embed"}
+setupNav("/demo");const contact=setupContact();setupReveal();const fa=document.getElementById("footerAddress");if(fa)fa.textContent=data.address||data.zone||"Dirección del negocio";
 document.title=data.name+" | Inicio";
 document.getElementById("hero").style.backgroundImage=`url("${cfg.photos[0]}")`;
-document.getElementById("sectorBadge").textContent=cfg.title+(data.zone?" · "+data.zone:"");
-document.getElementById("businessName").textContent=data.name;document.getElementById("heroText").textContent=cfg.hero;
-document.getElementById("services").innerHTML=cfg.services.slice(0,3).map(s=>`<article class="service"><div class="service-icon">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></article>`).join("");
-document.getElementById("rating").textContent=data.rating||"—";document.getElementById("reviews").textContent=data.reviews?data.reviews+" reseñas":"Valoraciones de clientes";
-document.getElementById("budgetHero").href=qsWithData("/static/demo-presupuesto.html");
-
+document.getElementById("sectorTitle").textContent=cfg.title;
+document.getElementById("businessName").textContent=data.name;
+document.getElementById("heroText").textContent=cfg.hero;
+document.getElementById("servicesBtn").href=qs("/static/demo-servicios.html");
+document.getElementById("quoteBtn").href=qs("/static/demo-presupuesto.html");
+document.getElementById("serviceGrid").innerHTML=cfg.services.map((s,i)=>`<article class="service-card"><div class="service-photo" style="background-image:url('${cfg.photos[(i%3)+1]}')"></div><div class="service-body"><div class="service-icon">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p><a class="card-link" href="${qs("/static/demo-servicios.html")}">Ver servicios →</a></div></article>`).join("");
+document.getElementById("features").innerHTML=cfg.tasks.slice(0,6).map(t=>`<div class="feature">✓ ${t}</div>`).join("");
+document.getElementById("featurePhoto").style.backgroundImage=`url("${cfg.photos[1]}")`;
+document.getElementById("works").innerHTML=cfg.photos.map((p,i)=>`<div class="work" style="background-image:url('${p}')"><span>${cfg.tasks[i]||cfg.title}</span></div>`).join("");
+document.getElementById("worksBtn").href=qs("/static/demo-trabajos.html");
+document.getElementById("rating").textContent=data.rating||"—";
+document.getElementById("reviews").textContent=data.reviews?(data.reviews+" reseñas"):"Valoraciones de clientes";
+document.getElementById("map").src=mapUrl();
+document.getElementById("address").textContent=data.address||"Dirección por completar";
+document.getElementById("zone").textContent=data.zone||"Zona por completar";
+document.getElementById("ratingSmall").textContent=data.rating?(data.rating+" · "+(data.reviews||0)+" reseñas"):"Valoraciones por completar";
 </script></body></html>
