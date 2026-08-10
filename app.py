@@ -332,7 +332,7 @@ async def search(inp: SearchIn):
         "mode": "real",
         "items": items
     }
-
+    
 
 @app.post("/api/prospects")
 def save_prospect(inp: SaveIn):
@@ -432,7 +432,6 @@ def set_status(
     "cliente",
     "descartado"
 }
-    }
 
     if inp.status not in allowed:
         raise HTTPException(
