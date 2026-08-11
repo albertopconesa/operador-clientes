@@ -21,41 +21,136 @@ app = FastAPI(title="Operador de Captación Web")
 
 app.mount(
     "/static",
+    import json
+import os
+from pathlib import Path
+from typing import Optional
+
+import httpx
+import psycopg2
+from psycopg2.extras import RealDictCursor
+from dotenv import load_dotenv
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
+
+
+load_dotenv()
+
+BASE = Path(__file__).parent
+
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
+
+app = FastAPI(title="Operador de Captación Web")
+
+app.mount(
+    "/static",
     StaticFiles(directory=BASE / "static"),
     name="static"
 )
 
 
+class Database:
+
+    def __init__(self):
+
+        if not DATABASE_URL:
+            raise RuntimeError(
+                "Falta la variable de entorno DATABASE_URL"
+            )
+
+        self.connection = psycopg2.connect(
+            DATABASE_URL
+        )
+
+
+    def execute(
+        self,
+        query,
+        params=()
+    ):
+
+        # Tu código antiguo usa ? porque venía de SQLite.
+        # PostgreSQL/psycopg2 utiliza %s.
+        query = query.replace(
+            "?",
+            "%s"
+        )
+
+        cursor = self.connection.cursor(
+            cursor_factory=RealDictCursor
+        )
+
+        cursor.execute(
+            query,
+            params
+        )
+
+        return cursor
+
+
+    def commit(self):
+
+        self.connection.commit()
+
+
+    def close(self):
+
+        self.connection.close()
+
+
 def db():
-    con = sqlite3.connect(DB)
-    con.row_factory = sqlite3.Row
-    return con
+
+    return Database()
 
 
 def init_db():
+
     con = db()
 
-    con.execute("""
-    CREATE TABLE IF NOT EXISTS prospects (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      place_id TEXT UNIQUE,
-      name TEXT NOT NULL,
-      address TEXT,
-      phone TEXT,
-      website TEXT,
-      maps_url TEXT,
-      rating REAL,
-      reviews INTEGER,
-      score INTEGER,
-      status TEXT DEFAULT 'nuevo',
-      sector TEXT,
-      zone TEXT,
-      raw_json TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    cur = con.execute(
+        """
+        CREATE TABLE IF NOT EXISTS prospects (
+
+            id SERIAL PRIMARY KEY,
+
+            place_id TEXT UNIQUE,
+
+            name TEXT NOT NULL,
+
+            address TEXT,
+
+            phone TEXT,
+
+            website TEXT,
+
+            maps_url TEXT,
+
+            rating DOUBLE PRECISION,
+
+            reviews INTEGER,
+
+            score INTEGER,
+
+            status TEXT DEFAULT 'nuevo',
+
+            sector TEXT,
+
+            zone TEXT,
+
+            raw_json TEXT,
+
+            created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+
+        )
+        """
     )
-    """)
+
+    cur.close()
 
     con.commit()
+
     con.close()
 
 
