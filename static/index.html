@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#101114" />
-<link rel="manifest" href="/manifest.webmanifest" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101114">
+<link rel="manifest" href="/manifest.webmanifest">
 <title>Operador Clientes</title>
 
 <style>
@@ -13,19 +13,9 @@
   background:#0b0c0f;
   color:#f5f6f7
 }
-
 *{box-sizing:border-box}
-
-body{
-  margin:0;
-  background:#0b0c0f
-}
-
-.wrap{
-  max-width:920px;
-  margin:auto;
-  padding:20px
-}
+body{margin:0;background:#0b0c0f}
+.wrap{max-width:920px;margin:auto;padding:20px}
 
 .top{
   display:flex;
@@ -34,16 +24,8 @@ body{
   gap:12px
 }
 
-.brand h1{
-  font-size:30px;
-  margin:0
-}
-
-.brand p{
-  margin:7px 0;
-  color:#aeb3bd;
-  font-size:17px
-}
+.brand h1{font-size:30px;margin:0}
+.brand p{margin:7px 0;color:#aeb3bd;font-size:17px}
 
 .pill{
   padding:10px 14px;
@@ -74,9 +56,7 @@ label{
   margin:0 0 7px
 }
 
-input,
-select,
-button{
+input,select,button{
   width:100%;
   border-radius:12px;
   border:1px solid #303540;
@@ -94,21 +74,16 @@ button{
   border:none
 }
 
-.secondary{
-  background:#22262e;
-  color:#fff
-}
-
+.secondary{background:#22262e;color:#fff}
 .ghost{
   background:transparent;
   border:1px solid #333944;
   color:#d9dde4
 }
 
-.demoBtn{
-  background:#6f5cff;
-  color:#fff
-}
+.demoBtn{background:#6f5cff;color:#fff}
+.copyBtn{background:#20242c;color:#fff}
+.sendBtn{background:#1f8f55;color:#fff}
 
 .row{
   display:flex;
@@ -116,9 +91,7 @@ button{
   align-items:center
 }
 
-.row > *{
-  flex:1
-}
+.row>*{flex:1}
 
 .check{
   display:flex;
@@ -128,23 +101,15 @@ button{
   color:#cfd3da
 }
 
-.check input{
-  width:auto
-}
+.check input{width:auto}
 
 .result{
   padding:18px 0;
   border-bottom:1px solid #262b34
 }
 
-.result:last-child{
-  border-bottom:0
-}
-
-.result h3{
-  margin:0 0 7px;
-  font-size:21px
-}
+.result:last-child{border-bottom:0}
+.result h3{margin:0 0 7px;font-size:21px}
 
 .meta{
   font-size:14px;
@@ -177,13 +142,8 @@ button{
   text-decoration:none
 }
 
-.good{
-  color:#9be5b1
-}
-
-.warn{
-  color:#ffd99a
-}
+.good{color:#9be5b1}
+.warn{color:#ffd99a}
 
 .tabs{
   display:flex;
@@ -201,9 +161,7 @@ button{
   color:#111
 }
 
-.hidden{
-  display:none
-}
+.hidden{display:none}
 
 .stats{
   display:grid;
@@ -218,9 +176,7 @@ button{
   padding:15px
 }
 
-.stat b{
-  font-size:27px
-}
+.stat b{font-size:27px}
 
 .stat span{
   display:block;
@@ -251,29 +207,24 @@ button{
   line-height:1.5
 }
 
+.notice{
+  margin-top:10px;
+  font-size:13px;
+  color:#9be5b1
+}
+
 @media(max-width:650px){
-  .grid{
-    grid-template-columns:1fr
-  }
+  .grid{grid-template-columns:1fr}
+  .wrap{padding:14px}
+  .brand h1{font-size:27px}
+  .brand p{font-size:16px}
+  .row{align-items:flex-start}
+  .score{flex:0 0 auto}
 
-  .wrap{
-    padding:14px
-  }
-
-  .brand h1{
-    font-size:27px
-  }
-
-  .brand p{
-    font-size:16px
-  }
-
-  .row{
-    align-items:flex-start
-  }
-
-  .score{
-    flex:0 0 auto
+  .actions button,
+  .actions a{
+    flex-grow:1;
+    text-align:center
   }
 }
 </style>
@@ -288,50 +239,33 @@ button{
       <h1>Operador Clientes</h1>
       <p>Encuentra negocios sin web y conviértelos en prospectos.</p>
     </div>
-
-    <div class="pill" id="mode">
-      Listo
-    </div>
+    <div class="pill" id="mode">Listo</div>
   </div>
 
   <div class="tabs">
-    <button class="active" onclick="tab('buscar',this)">
-      Buscar
-    </button>
-
-    <button onclick="tab('prospectos',this)">
-      Prospectos
-    </button>
+    <button class="active" onclick="tab('buscar',this)">Buscar</button>
+    <button onclick="tab('prospectos',this)">Prospectos</button>
   </div>
-
 
   <section id="buscar">
 
     <div class="card">
-
       <div class="grid">
 
         <div>
           <label>Sector</label>
-          <input
-            id="sector"
-            value="talleres mecánicos"
-            placeholder="Ej. reformas, restaurantes, clínicas"
-          />
+          <input id="sector" value="talleres mecánicos"
+          placeholder="Ej. reformas, restaurantes, clínicas">
         </div>
 
         <div>
           <label>Zona</label>
-          <input
-            id="zone"
-            value="Murcia"
-            placeholder="Ej. Murcia, Cartagena, Jumilla"
-          />
+          <input id="zone" value="Murcia"
+          placeholder="Ej. Murcia, Cartagena, Jumilla">
         </div>
 
         <div>
           <label>Resultados</label>
-
           <select id="max">
             <option>10</option>
             <option selected>20</option>
@@ -341,12 +275,7 @@ button{
       </div>
 
       <label class="check">
-        <input
-          type="checkbox"
-          id="only"
-          checked
-        />
-
+        <input type="checkbox" id="only" checked>
         Mostrar sólo negocios sin web asociada
       </label>
 
@@ -357,17 +286,13 @@ button{
       </div>
 
       <p class="tiny">
-        Consejo: busca un sector y un municipio cada vez.
-        Menos ruido, más clientes que realmente puedas llamar.
+        Busca un sector y un municipio cada vez.
       </p>
-
     </div>
-
 
     <div class="card">
 
       <div class="stats">
-
         <div class="stat">
           <b id="found">0</b>
           <span>Encontrados</span>
@@ -382,7 +307,6 @@ button{
           <b id="hot">0</b>
           <span>8-10 puntos</span>
         </div>
-
       </div>
 
       <div id="results" class="empty">
@@ -393,270 +317,215 @@ button{
 
   </section>
 
-
-  <section
-    id="prospectos"
-    class="hidden"
-  >
-
+  <section id="prospectos" class="hidden">
     <div class="card">
 
       <h2 style="margin-top:0">
         Prospectos guardados
       </h2>
 
-      <div
-        id="prospects"
-        class="empty"
-      >
+      <div id="prospects" class="empty">
         Todavía no has guardado ninguno.
       </div>
 
     </div>
-
   </section>
 
 </div>
 
-
 <script>
 
-let current = [];
+let current=[];
 
+function tab(id,btn){
 
-function tab(id, btn){
-
-  document
-    .querySelectorAll('.tabs button')
-    .forEach(
-      x => x.classList.remove('active')
-    );
+  document.querySelectorAll('.tabs button')
+    .forEach(x=>x.classList.remove('active'));
 
   btn.classList.add('active');
 
-  document
-    .getElementById('buscar')
-    .classList.toggle(
-      'hidden',
-      id !== 'buscar'
-    );
+  document.getElementById('buscar')
+    .classList.toggle('hidden',id!=='buscar');
 
-  document
-    .getElementById('prospectos')
-    .classList.toggle(
-      'hidden',
-      id !== 'prospectos'
-    );
+  document.getElementById('prospectos')
+    .classList.toggle('hidden',id!=='prospectos');
 
-  if(id === 'prospectos'){
+  if(id==='prospectos'){
     loadProspects();
   }
 }
 
-
 function esc(s=''){
-
-  return String(s).replace(
-    /[&<>"']/g,
-    c => ({
-      '&':'&amp;',
-      '<':'&lt;',
-      '>':'&gt;',
-      '"':'&quot;',
-      "'":'&#39;'
-    }[c])
-  );
+  return String(s).replace(/[&<>"']/g,c=>({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#39;'
+  }[c]));
 }
 
+function demoUrl(b,sector='',zone=''){
 
-function demoUrl(
-  b,
-  sector='',
-  zone=''
-){
-
-  const p = new URLSearchParams({
-    name: b.name || 'Mi negocio',
-    phone: b.phone || '',
-    sector: sector || b.sector || '',
-    zone: zone || b.zone || '',
-    address: b.address || '',
-    rating: b.rating || '',
-    reviews: b.reviews || ''
+  const p=new URLSearchParams({
+    name:b.name||'Mi negocio',
+    phone:b.phone||'',
+    sector:sector||b.sector||'',
+    zone:zone||b.zone||'',
+    address:b.address||'',
+    rating:b.rating||'',
+    reviews:b.reviews||''
   });
 
-  return '/demo?' + p.toString();
+  return window.location.origin+'/demo?'+p.toString();
 }
 
-
-function openDemoBusiness(
-  b,
-  sector='',
-  zone=''
-){
-
-  window.open(
-    demoUrl(
-      b,
-      sector,
-      zone
-    ),
-    '_blank'
-  );
+function openDemoBusiness(b,sector='',zone=''){
+  window.open(demoUrl(b,sector,zone),'_blank');
 }
 
+async function copyDemoLink(b,sector='',zone='',btn=null){
+
+  const url=demoUrl(b,sector,zone);
+
+  try{
+    await navigator.clipboard.writeText(url);
+
+    if(btn){
+      const old=btn.textContent;
+      btn.textContent='Copiado ✓';
+
+      setTimeout(()=>{
+        btn.textContent=old;
+      },1800);
+    }
+
+  }catch(e){
+
+    const area=document.createElement('textarea');
+    area.value=url;
+    document.body.appendChild(area);
+    area.select();
+    document.execCommand('copy');
+    area.remove();
+
+    if(btn){
+      btn.textContent='Copiado ✓';
+    }
+  }
+}
+
+function sendDemo(b,sector='',zone=''){
+
+  const url=demoUrl(b,sector,zone);
+
+  const name=b.name||'tu negocio';
+
+  const text=
+    `Hola, he preparado una demostración de cómo podría quedar una web para ${name}.\n\n`+
+    `Puedes verla aquí:\n${url}\n\n`+
+    `Es una demostración inicial y se puede adaptar a vuestro negocio.`;
+
+  const phone=String(b.phone||'').replace(/\D/g,'');
+
+  const wa=
+    phone
+    ? `https://wa.me/34${phone}?text=${encodeURIComponent(text)}`
+    : `https://wa.me/?text=${encodeURIComponent(text)}`;
+
+  window.open(wa,'_blank');
+}
 
 async function searchBusinesses(ev){
 
-  const btn = ev.currentTarget;
+  const btn=ev.currentTarget;
 
-  btn.disabled = true;
-  btn.textContent = 'Buscando…';
+  btn.disabled=true;
+  btn.textContent='Buscando…';
 
-  const sector =
-    document
-      .getElementById('sector')
-      .value
-      .trim();
-
-  const zone =
-    document
-      .getElementById('zone')
-      .value
-      .trim();
+  const sector=document.getElementById('sector').value.trim();
+  const zone=document.getElementById('zone').value.trim();
 
   try{
 
-    const r = await fetch(
-      '/api/search',
-      {
-        method:'POST',
+    const r=await fetch('/api/search',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        sector,
+        zone,
+        only_without_website:
+          document.getElementById('only').checked,
+        max_results:
+          +document.getElementById('max').value
+      })
+    });
 
-        headers:{
-          'Content-Type':
-          'application/json'
-        },
-
-        body:JSON.stringify({
-          sector,
-          zone,
-          only_without_website:
-            document
-              .getElementById('only')
-              .checked,
-
-          max_results:
-            +document
-              .getElementById('max')
-              .value
-        })
-      }
-    );
-
-    const data = await r.json();
+    const data=await r.json();
 
     if(!r.ok){
-      throw new Error(
-        data.detail || 'Error'
-      );
+      throw new Error(data.detail||'Error');
     }
 
-    current = data.items;
+    current=data.items||[];
 
-    document
-      .getElementById('mode')
-      .textContent =
-        data.mode === 'demo'
-        ? 'Modo demo'
-        : 'Datos reales';
+    document.getElementById('mode').textContent=
+      data.mode==='demo'
+      ? 'Modo demo'
+      : 'Datos reales';
 
     renderResults();
 
   }catch(e){
 
-    document
-      .getElementById('results')
-      .innerHTML =
-        '<div class="empty">'
-        + esc(e.message)
-        + '</div>';
+    document.getElementById('results').innerHTML=
+      '<div class="empty">'+esc(e.message)+'</div>';
 
   }finally{
 
-    btn.disabled = false;
-
-    btn.textContent =
-      'Buscar oportunidades';
+    btn.disabled=false;
+    btn.textContent='Buscar oportunidades';
   }
 }
 
-
 function renderResults(){
 
-  document
-    .getElementById('found')
-    .textContent =
-      current.length;
+  document.getElementById('found').textContent=current.length;
 
-  document
-    .getElementById('noWeb')
-    .textContent =
-      current.filter(
-        x => !x.website
-      ).length;
+  document.getElementById('noWeb').textContent=
+    current.filter(x=>!x.website).length;
 
-  document
-    .getElementById('hot')
-    .textContent =
-      current.filter(
-        x => x.score >= 8
-      ).length;
+  document.getElementById('hot').textContent=
+    current.filter(x=>x.score>=8).length;
 
-  const box =
-    document
-      .getElementById('results');
+  const box=document.getElementById('results');
 
   if(!current.length){
-
-    box.innerHTML =
-      '<div class="empty">'
-      + 'No encontré resultados con esos filtros.'
-      + '</div>';
-
+    box.innerHTML=
+      '<div class="empty">No encontré resultados con esos filtros.</div>';
     return;
   }
 
-  box.className = '';
+  box.className='';
 
-  box.innerHTML =
-    current
-      .map(
-        (b,i) => `
+  box.innerHTML=current.map((b,i)=>`
 
     <div class="result">
 
       <div class="row">
 
         <div>
-
-          <h3>
-            ${esc(b.name)}
-          </h3>
+          <h3>${esc(b.name)}</h3>
 
           <div class="meta">
-
-            ${esc(b.address)}
+            ${esc(b.address||'')}
             <br>
 
-            ${
-              b.phone
-              ? '📞 ' + esc(b.phone)
-              : 'Sin teléfono'
-            }
+            ${b.phone ? '📞 '+esc(b.phone) : 'Sin teléfono'}
 
-            · ⭐ ${esc(b.rating)}
+            · ⭐ ${esc(b.rating||'')}
 
-            (${esc(b.reviews)} reseñas)
+            (${esc(b.reviews||0)} reseñas)
 
             <br>
 
@@ -665,9 +534,7 @@ function renderResults(){
               ? '<span class="warn">Tiene web</span>'
               : '<span class="good">Sin web asociada</span>'
             }
-
           </div>
-
         </div>
 
         <div class="score">
@@ -676,220 +543,157 @@ function renderResults(){
 
       </div>
 
-
-      <div
-        class="meta"
-        style="margin-top:9px"
-      >
-
-        ${
-          b.reasons
-            .map(esc)
-            .join(' · ')
-        }
-
+      <div class="meta" style="margin-top:9px">
+        ${(b.reasons||[]).map(esc).join(' · ')}
       </div>
-
 
       <div class="actions">
 
-        <button
-          class="secondary"
-          onclick="saveProspect(${i},this)"
-        >
+        <button class="secondary"
+          onclick="saveProspect(${i},this)">
           Guardar
         </button>
 
-
-        <button
-          class="demoBtn"
-          onclick="openDemo(${i})"
-        >
-          Crear demo
+        <button class="demoBtn"
+          onclick="openDemo(${i})">
+          Abrir demo
         </button>
 
+        <button class="copyBtn"
+          onclick="copyCurrentDemo(${i},this)">
+          📋 Copiar enlace
+        </button>
 
-        <button
-          class="ghost"
-          onclick="analyze(${i},this)"
-        >
+        <button class="sendBtn"
+          onclick="sendCurrentDemo(${i})">
+          💬 Enviar demo
+        </button>
+
+        <button class="ghost"
+          onclick="analyze(${i},this)">
           Analizar con IA
         </button>
 
-
         ${
           b.maps_url
-          ? `
-          <a
-            class="ghost"
-            href="${esc(b.maps_url)}"
-            target="_blank"
-          >
-            Maps
-          </a>
-          `
+          ? `<a class="ghost"
+              href="${esc(b.maps_url)}"
+              target="_blank">
+              Maps
+             </a>`
           : ''
         }
 
       </div>
 
-
-      <div id="a${i}">
-      </div>
+      <div id="a${i}"></div>
 
     </div>
 
-  `
-      )
-      .join('');
+  `).join('');
 }
 
+async function saveProspect(i,btn){
 
-async function saveProspect(
-  i,
-  btn
-){
+  const r=await fetch('/api/prospects',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      business:current[i],
+      sector:document.getElementById('sector').value,
+      zone:document.getElementById('zone').value
+    })
+  });
 
-  const r = await fetch(
-    '/api/prospects',
-    {
-
-      method:'POST',
-
-      headers:{
-        'Content-Type':
-        'application/json'
-      },
-
-      body:JSON.stringify({
-
-        business:
-          current[i],
-
-        sector:
-          document
-            .getElementById('sector')
-            .value,
-
-        zone:
-          document
-            .getElementById('zone')
-            .value
-      })
-    }
-  );
-
-  if(r.ok && btn){
-
-    btn.textContent =
-      'Guardado ✓';
-
-    btn.disabled =
-      true;
+  if(r.ok&&btn){
+    btn.textContent='Guardado ✓';
+    btn.disabled=true;
   }
 }
 
-
 function openDemo(i){
-
   openDemoBusiness(
-
     current[i],
-
-    document
-      .getElementById('sector')
-      .value,
-
-    document
-      .getElementById('zone')
-      .value
+    document.getElementById('sector').value,
+    document.getElementById('zone').value
   );
 }
 
-
-async function analyze(
-  i,
-  btn
-){
-
-  btn.disabled = true;
-
-  btn.textContent =
-    'Analizando…';
-
-  const r =
-    await fetch(
-      '/api/analyze',
-      {
-
-        method:'POST',
-
-        headers:{
-          'Content-Type':
-          'application/json'
-        },
-
-        body:JSON.stringify({
-          business:
-            current[i]
-        })
-      }
-    );
-
-  const d =
-    await r.json();
-
-  document
-    .getElementById(
-      'a' + i
-    )
-    .innerHTML =
-      '<div class="analysis">'
-      + esc(
-          d.text
-          || d.detail
-          || 'Sin respuesta'
-        )
-      + '</div>';
-
-  btn.disabled = false;
-
-  btn.textContent =
-    'Analizar con IA';
+function copyCurrentDemo(i,btn){
+  copyDemoLink(
+    current[i],
+    document.getElementById('sector').value,
+    document.getElementById('zone').value,
+    btn
+  );
 }
 
+function sendCurrentDemo(i){
+  sendDemo(
+    current[i],
+    document.getElementById('sector').value,
+    document.getElementById('zone').value
+  );
+}
+
+async function analyze(i,btn){
+
+  btn.disabled=true;
+  btn.textContent='Analizando…';
+
+  try{
+
+    const r=await fetch('/api/analyze',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        business:current[i]
+      })
+    });
+
+    const d=await r.json();
+
+    document.getElementById('a'+i).innerHTML=
+      '<div class="analysis">'+
+      esc(d.text||d.detail||'Sin respuesta')+
+      '</div>';
+
+  }finally{
+    btn.disabled=false;
+    btn.textContent='Analizar con IA';
+  }
+}
 
 async function loadProspects(){
 
-  const r =
-    await fetch(
-      '/api/prospects'
-    );
+  const r=await fetch('/api/prospects');
+  const data=await r.json();
 
-  const data =
-    await r.json();
-
-  const box =
-    document
-      .getElementById(
-        'prospects'
-      );
+  const box=document.getElementById('prospects');
 
   if(!data.length){
 
-    box.innerHTML =
-      '<div class="empty">'
-      + 'Todavía no has guardado ninguno.'
-      + '</div>';
+    box.innerHTML=
+      '<div class="empty">Todavía no has guardado ninguno.</div>';
 
     return;
   }
 
-  box.className = '';
+  box.className='';
 
-  box.innerHTML =
-    data.map(
-      b => `
+  box.innerHTML=data.map((b,i)=>{
+
+    const safeBusiness=encodeURIComponent(JSON.stringify({
+      name:b.name||'',
+      phone:b.phone||'',
+      sector:b.sector||'',
+      zone:b.zone||'',
+      address:b.address||'',
+      rating:b.rating||'',
+      reviews:b.reviews||''
+    }));
+
+    return `
 
     <div class="result">
 
@@ -897,27 +701,14 @@ async function loadProspects(){
 
         <div>
 
-          <h3>
-            ${esc(b.name)}
-          </h3>
+          <h3>${esc(b.name)}</h3>
 
           <div class="meta">
-
-            ${esc(b.address || '')}
-
+            ${esc(b.address||'')}
             <br>
-
-            ${
-              esc(
-                b.phone
-                || 'Sin teléfono'
-              )
-            }
-
-            · ${esc(b.sector || '')}
-
-            · ${esc(b.zone || '')}
-
+            ${esc(b.phone||'Sin teléfono')}
+            · ${esc(b.sector||'')}
+            · ${esc(b.zone||'')}
           </div>
 
         </div>
@@ -928,111 +719,60 @@ async function loadProspects(){
 
       </div>
 
-
       <div class="actions">
 
         <select
-          onchange="
-            status(
-              ${b.id},
-              this.value
-            )
-          "
-          style="width:auto"
-        >
+          onchange="status(${b.id},this.value)"
+          style="width:auto">
 
-          <option
-            ${
-              b.status === 'nuevo'
-              ? 'selected'
-              : ''
-            }
-          >
+          <option ${b.status==='nuevo'?'selected':''}>
             nuevo
           </option>
 
-          <option
-            ${
-              b.status === 'contactar'
-              ? 'selected'
-              : ''
-            }
-          >
+          <option ${b.status==='contactar'?'selected':''}>
             contactar
           </option>
 
-          <option
-            ${
-              b.status === 'contactado'
-              ? 'selected'
-              : ''
-            }
-          >
+          <option ${b.status==='contactado'?'selected':''}>
             contactado
           </option>
 
-          <option
-            ${
-              b.status === 'interesado'
-              ? 'selected'
-              : ''
-            }
-          >
+          <option ${b.status==='interesado'?'selected':''}>
             interesado
           </option>
 
-          <option
-            ${
-              b.status === 'cliente'
-              ? 'selected'
-              : ''
-            }
-          >
+          <option ${b.status==='cliente'?'selected':''}>
             cliente
           </option>
 
-          <option
-            ${
-              b.status === 'descartado'
-              ? 'selected'
-              : ''
-            }
-          >
+          <option ${b.status==='descartado'?'selected':''}>
             descartado
           </option>
 
         </select>
 
-
-        <button
-          class="demoBtn"
-          onclick='openDemoBusiness(
-            ${JSON.stringify({
-              name:b.name,
-              phone:b.phone,
-              sector:b.sector,
-              zone:b.zone,
-              address:b.address,
-              rating:b.rating,
-              reviews:b.reviews
-            }).replace(/'/g,"&#39;")}
-          )'
-        >
-          Crear demo
+        <button class="demoBtn"
+          onclick="prospectOpenDemo('${safeBusiness}')">
+          🌐 Abrir demo
         </button>
 
+        <button class="copyBtn"
+          onclick="prospectCopyDemo('${safeBusiness}',this)">
+          📋 Copiar enlace
+        </button>
+
+        <button class="sendBtn"
+          onclick="prospectSendDemo('${safeBusiness}')">
+          💬 Enviar demo
+        </button>
 
         ${
           b.maps_url
-          ? `
-          <a
-            class="ghost"
-            href="${esc(b.maps_url)}"
-            target="_blank"
-          >
-            Maps
-          </a>
-          `
+          ? `<a class="ghost"
+              href="${esc(b.maps_url)}"
+              target="_blank">
+              Maps
+             </a>`
           : ''
         }
 
@@ -1040,45 +780,45 @@ async function loadProspects(){
 
     </div>
 
-  `
-    ).join('');
+    `;
+  }).join('');
 }
 
+function decodeBusiness(encoded){
+  return JSON.parse(
+    decodeURIComponent(encoded)
+  );
+}
 
-async function status(
-  id,
-  status
-){
+function prospectOpenDemo(encoded){
+  const b=decodeBusiness(encoded);
+  openDemoBusiness(b,b.sector,b.zone);
+}
+
+function prospectCopyDemo(encoded,btn){
+  const b=decodeBusiness(encoded);
+  copyDemoLink(b,b.sector,b.zone,btn);
+}
+
+function prospectSendDemo(encoded){
+  const b=decodeBusiness(encoded);
+  sendDemo(b,b.sector,b.zone);
+}
+
+async function status(id,status){
 
   await fetch(
-    '/api/prospects/'
-    + id
-    + '/status',
+    '/api/prospects/'+id+'/status',
     {
-
       method:'PATCH',
-
-      headers:{
-        'Content-Type':
-        'application/json'
-      },
-
-      body:JSON.stringify({
-        status
-      })
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({status})
     }
   );
 }
 
-
-if(
-  'serviceWorker'
-  in navigator
-){
-
-  navigator
-    .serviceWorker
-    .register('/sw.js');
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js');
 }
 
 </script>
