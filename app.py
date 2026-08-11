@@ -153,7 +153,12 @@ def normalize(p: dict) -> dict:
 @app.get("/")
 def home():
     return FileResponse(
-        BASE / "static" / "index.html"
+        BASE / "static" / "index.html",
+        headers={
+            "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+            "Pragma": "no-cache",
+            "Expires": "0"
+        }
     )
 
 
@@ -161,6 +166,7 @@ def home():
 def manifest():
     return FileResponse(
         BASE / "static" / "manifest.webmanifest"
+    )
     )
 
 
