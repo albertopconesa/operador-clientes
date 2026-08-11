@@ -1,28 +1,5 @@
 import json
 import os
-import sqlite3
-from pathlib import Path
-from typing import Optional
-
-import httpx
-from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
-
-
-load_dotenv()
-
-BASE = Path(__file__).parent
-DB = BASE / "operador.db"
-
-app = FastAPI(title="Operador de Captación Web")
-
-app.mount(
-    "/static",
-    import json
-import os
 from pathlib import Path
 from typing import Optional
 
@@ -34,7 +11,6 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-
 
 load_dotenv()
 
@@ -49,7 +25,6 @@ app.mount(
     StaticFiles(directory=BASE / "static"),
     name="static"
 )
-
 
 class Database:
 
