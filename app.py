@@ -167,7 +167,7 @@ def manifest():
     return FileResponse(
         BASE / "static" / "manifest.webmanifest"
     )
-    )
+    
 
 
 @app.get("/sw.js")
